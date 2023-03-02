@@ -1,0 +1,122 @@
+{% extends 'customer_login/base.html' %}
+{% load static %}
+{% block body %}
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+{#<div class="wrapper fadeInDown">#}
+{#  <div id="formContent">#}
+{#    <div class="fadeIn first">#}
+{#        <div>#}
+{#            <h2>ورود / ثبت نام</h2>#}
+{#        </div>#}
+{#      <img src="{% static 'images/mobile.png' %}" id="icon" alt="User Icon" width="150"/>#}
+{#    </div>#}
+{#    <form action="." method="post">#}
+{#        {% csrf_token %}#}
+{#      <input type="text"  required class="fadeIn second" name="mobile" placeholder="شماره موبایل خود را وارد کنید">#}
+{#      <input type="submit" class="fadeIn fourth" value="ثبت">#}
+{#    </form>#}
+{##}
+{#  </div>#}
+{#</div>#}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{# $(if chap-id)#}
+    <form name="sendin" action="$(link-login-only)" method="post" style="display:none">
+        <input type="hidden" name="username" />
+        <input type="hidden" name="password" />
+        <input type="hidden" name="dst" value="$(link-orig)" />
+        <input type="hidden" name="popup" value="true" />
+    </form>
+
+{#    <script src="/md5.js"></script>#}
+    <script>
+        function doLogin() {
+            document.sendin.username.value = document.login.username.value;
+            document.sendin.password.value = hexMD5('$(chap-id)' + document.login.password.value + '$(chap-challenge)');
+            document.sendin.submit();
+            return false;
+        }
+
+    </script>
+{#    $(endif)#}
+    <div class="ie-fixMinHeight">
+        <div class="main">
+            <div id="images">
+                <a href="https://ashaarvin.com"><img class="fblogo" src="{% static 'images/ASHAARVIN_logo.png' %}"></a>
+
+                <img id="logo" class="fblogo" src="{% static 'images/shandiz.png' %}" style="height: 220px; width:250px;">
+
+            </div>
+
+
+
+
+
+
+            <div class="wrap animated fadeIn">
+
+                <h4 style="text-align: center">کد تایید ارسال شده را وارد نمایید</h4>
+
+
+                    <form action=".." method="post">
+                        {% csrf_token %}
+                        <input type="text" value="{{ mobile }}" readonly disabled class="fadeIn second" name="mobile" >
+                        <input type="text"  required class="fadeIn second" name="otp"  placeholder="کد تایید را وارد کنید">
+                        <input type="submit" class="fadeIn fourth" value="تایید کردن">
+                    </form>
+                    <div id="formFooter">
+                        <a id="changemobile" href="{% url 'register_view' %}">تغییر شماره موبایل</a>
+                    </div>
+
+
+
+
+
+
+
+                    <!-- <p class="info $(if error)alert$(endif)">
+                        $(if error == "")جهت ورود به پنل مشتریان vip $(if trial == 'yes')<br />
+						مشتری عزیز شاندیز گالریا، برای استفاده از اینترنت رایگان اینجا کلیک نمایید، اوقات خوشی را آرزومندیم
+						<a href="$(link-login-only)?dst=$(link-orig-esc)&amp;username=T-$(mac-esc)">click here</a>.$(endif)
+                        $(endif)
+
+                        $(if error)$(error)$(endif)
+                    </p> -->
+
+
+
+                <br>
+                <button class="btn" type="button"><a href="https://shandizgalleria.menew.pw">منوی رستوران</a></button>
+                <br>
+                <button class="btn" type="button"><a href="{% url 'vip_login' %}">جهت ورود به پنل مشتریان VIP</a></button>
+
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

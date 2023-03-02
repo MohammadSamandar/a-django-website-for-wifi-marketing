@@ -1,0 +1,88 @@
+{% load static %}
+{% load thumbnail %}
+
+<footer class="footer-section">
+        <!--footer top start-->
+        <!--for light footer add .footer-light class and for dark footer add .bg-dark .text-white class-->
+        <div class="footer-top footer-light ptb-120">
+            <div class="container">
+                <div class="row justify-content-between">
+                    <div class="col-md-8 col-lg-4 mb-md-4 mb-lg-0">
+                        <div class="footer-single-col">
+                            <div class="footer-single-col mb-4">
+                                {% thumbnail site_setting.site_logo "60x60" crop='center' quality=100 as im %}
+                                    <img src="{{ im.url }}" alt="logo" class="img-fluid logo-white">
+                                    <img src="{{ im.url }}" alt="logo" class="img-fluid logo-color">
+                                {% endthumbnail %}
+{#                                <img src="{{ site_setting.site_logo.url }}" alt="logo" class="img-fluid logo-white">#}
+{#                                <img src="{{ site_setting.site_logo.url }}" alt="logo" class="img-fluid logo-color">#}
+                            </div>
+                            <p>آخرین اخبار، مقالات و منابع را در صندوق پستی شما هفتگی ارسال خواهیم کرد
+                                </p>
+
+                            <form class="newsletter-form position-relative d-block d-lg-flex d-md-flex">
+                                <input type="text" class="input-newsletter form-control me-2" placeholder="ایمیل خود را وارد کنید" name="email" required="" autocomplete="off">
+                                <input type="submit" value="اشتراک" data-wait="صبر کنید ..." class="btn btn-primary mt-3 mt-lg-0 mt-md-0">
+                            </form>
+{#                            <div class="ratting-wrap mt-4">#}
+{#                                <h6 class="mb-0">10/10 امتیاز کلی</h6>#}
+{#                                <ul class="list-unstyled rating-list list-inline mb-0">#}
+{#                                    <li class="list-inline-item"><i class="fas fa-star text-warning"></i></li>#}
+{#                                    <li class="list-inline-item"><i class="fas fa-star text-warning"></i></li>#}
+{#                                    <li class="list-inline-item"><i class="fas fa-star text-warning"></i></li>#}
+{#                                    <li class="list-inline-item"><i class="fas fa-star text-warning"></i></li>#}
+{#                                    <li class="list-inline-item"><i class="fas fa-star text-warning"></i></li>#}
+{#                                </ul>#}
+{#                            </div>#}
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-7 mt-4 mt-md-0 mt-lg-0">
+                        <div class="row">
+                            {% for item in footer_link_boxes %}
+                                <div class="col-md-4 col-lg-4 mt-4 mt-md-0 mt-lg-0">
+                                <div class="footer-single-col">
+                                    <h3>{{ item.title }}</h3>
+                                    <ul class="list-unstyled footer-nav-list mb-lg-0">
+                                        {% for link in item.footerlink_set.all %}
+                                            <li><a href="{{ link.url }}" class="text-decoration-none">{{ link.title }}</a></li>
+                                        {% endfor %}
+
+                                    </ul>
+                                </div>
+                            </div>
+                            {% endfor %}
+
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!--footer top end-->
+
+        <!--footer bottom start-->
+        <div class="footer-bottom footer-light py-4">
+            <div class="container">
+                <div class="row justify-content-between align-items-center">
+                    <div class="col-md-7 col-lg-7">
+                        <div class="copyright-text">
+                            <p class="mb-lg-0 mb-md-0">{{ site_setting.copy_right_text }} </p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-lg-4">
+                        <div class="footer-single-col text-start text-lg-end text-md-end">
+                            <ul class="list-unstyled list-inline footer-social-list mb-0">
+                                <li class="list-inline-item"><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                <li class="list-inline-item"><a href="#"><i class="fab fa-whatsapp"></i></a></li>
+                                <li class="list-inline-item"><a href="#"><i class="fas fa-envelope"></i></a></li>
+                                <li class="list-inline-item"><a href="#"><i class="fab fa-youtube"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--footer bottom end-->
+    </footer>

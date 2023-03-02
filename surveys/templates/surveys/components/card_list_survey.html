@@ -1,0 +1,48 @@
+<div>
+    
+    <div class="flex -space-x-4 hover:space-x-1 float-right">
+        <a href="{% url 'surveys:create' survey.slug %}" class="z-20 block p-4 text-purple-700 transition-all bg-purple-100 border-2 border-white rounded-full active:bg-purple-50 hover:scale-110 focus:outline-none focus:ring"
+                type="button">
+                {% include "surveys/buttons/add_button.html" %}
+        </a>
+
+
+            <a href="{% url 'surveys:admin_forms_survey' survey.slug %}" class="z-20 block p-4 text-blue-700 transition-all bg-blue-100 border-2 border-white rounded-full active:bg-blue-50 hover:scale-110 focus:outline-none focus:ring"
+                    type="button">
+                {% include "surveys/buttons/edit_button.html" %}
+            </a>
+
+            <a href="{% url 'surveys:admin_summary_survey' survey.slug %}" class="z-30 block p-4 text-green-700 transition-all bg-green-100 border-2 border-white rounded-full hover:scale-110 focus:outline-none focus:ring active:bg-gren50"
+                    type="button">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z" />
+                </svg>
+            </a>
+
+
+            <a href="{% url 'surveys:admin_delete_survey' survey.slug %}" type="button" class="button-delete z-30 block p-4 text-red-700 transition-all bg-red-100 border-2 border-white rounded-full hover:scale-110 focus:outline-none focus:ring active:bg-red-50">
+                {% include "surveys/buttons/delete_button.html" %}
+            </a>
+
+{#
+
+    </div>
+
+    <a class="relative block p-8 overflow-hidden border border-gray-100 rounded-lg bg-white" href="{% url 'surveys:DetailSurveyView' survey.slug %}">
+        <span class="absolute inset-x-0 bottom-0 h-2  bg-gradient-to-r from-green-300 via-blue-500 to-purple-600"></span>
+        <div class="justify-between sm:flex">
+            <div>
+                <h5 class="text-xl font-bold text-gray-900">
+                    {{ survey.name }}
+                </h5>
+            </div>
+        </div>
+
+        <div class="mt-4 sm:pr-8">
+            <p class="text-sm text-gray-500">
+                {{ survey.description }}
+            </p>
+        </div>
+    </a>
+</div>

@@ -1,0 +1,33 @@
+{% extends 'business_owner_panel/dashboard_base.html' %}
+{% load static %}
+
+{% block title %}
+    داشبورد
+{% endblock %}
+
+{% block content %}
+    <!--begin::Content container-->
+    <div id="kt_app_content_container" class="app-container container-fluid">
+
+
+    </div>
+    <!--end::Content container-->
+
+{% endblock %}
+
+
+{% block jsfiles %}
+        <!--begin::Vendors Javascript(used for this page only)-->
+		<script src="{% static 'business_owner_panel/plugins/custom/datatables/datatables.bundle.js' %}"></script>
+		<!--end::Vendors Javascript-->
+
+		<!--begin::سفارشی Javascript(used for this page only)-->
+		<script src="{% static 'business_owner_panel/js/widgets.bundle.js' %}"></script>
+		<script src="{% static 'business_owner_panel/js/custom/widgets.js' %}"></script>
+		<script src="{% static 'business_owner_panel/js/custom/utilities/modals/users-search.js' %}"></script>
+        <script src="{% static 'business_owner_panel/plugins/custom/fullcalendar/fullcalendar.bundle.js' %}"></script>
+
+
+		<!--end::سفارشی Javascript-->
+{% endblock %}
+

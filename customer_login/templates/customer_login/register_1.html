@@ -1,0 +1,88 @@
+{% extends 'customer_login/base.html' %}
+{% load static %}
+{% block body %}
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+
+
+
+    <div class="ie-fixMinHeight">
+        <div class="main">
+
+            <div id="images">
+                <a href="https://ashaarvin.com"><img class="fblogo" src="{% static 'images/ASHAARVIN_logo.png' %}"></a>
+
+                <img id="logo" class="fblogo" src="{% static 'images/shandiz.png' %}" style="height: 220px; width:250px;">
+
+            </div>
+
+
+            <div class="wrap animated fadeIn">
+
+
+
+                <p class="not-selectable info $(if error)alert$(endif)">
+
+                    مشتری عزیز شاندیز گالریا، برای استفاده از اینترنت رایگان
+                    <b style="color: mediumspringgreen">شماره موبایل</b>
+                    خود را وارد کنید، اوقات خوشی را آرزومندیم.
+                    <br>
+                    <br>
+                </p>
+
+                    <form action=".." method="post">
+                    {% csrf_token %}
+                    <input type="text"  required class="fadeIn second" name="mobile" placeholder="شماره موبایل خود را وارد کنید">
+                    <input type="submit" class="fadeIn fourth" value="ثبت">
+                    </form>
+
+
+                <br>
+                <button class="btn" type="button"><a href="https://shandizgalleria.menew.pw">منوی رستوران</a></button>
+                <br>
+                <button class="btn" type="button"><a href="{% url 'vip_login' %}">جهت ورود به پنل مشتریان VIP</a></button>
+
+
+
+
+{#                    <input type="hidden" name="dst" value="$(link-orig)" />#}
+{#                    <input type="hidden" name="popup" value="true"/>#}
+
+{#					<p class="info $(if error)alert$(endif)">#}
+
+                    <!-- <a href="$(link-login-only)?dst=$(link-orig-esc)&amp;username=T-$(mac-esc)">اینجا کلیک کنید </a> -->
+
+{#                    $(if error == "")#}
+{#                    $(if trial == 'yes')#}
+{#                    $(endif)#}
+{#                    $(endif)#}
+{##}
+{#                        $(if error)$(error)$(endif)#}
+{#                    </p>#}
+
+
+                    <!-- <p class="info $(if error)alert$(endif)">
+                        $(if error == "")جهت ورود به پنل مشتریان vip $(if trial == 'yes')<br />
+						مشتری عزیز شاندیز گالریا، برای استفاده از اینترنت رایگان اینجا کلیک نمایید، اوقات خوشی را آرزومندیم
+						<a href="$(link-login-only)?dst=$(link-orig-esc)&amp;username=T-$(mac-esc)">click here</a>.$(endif)
+                        $(endif)
+
+                        $(if error)$(error)$(endif)
+                    </p> -->
+
+
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

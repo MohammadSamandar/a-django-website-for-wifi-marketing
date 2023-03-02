@@ -1,0 +1,164 @@
+{% extends 'business_owner_panel/dashboard_base.html' %}
+{% load static %}
+
+{% block title %}
+    ویرایش اطلاعات کاربری
+{% endblock %}
+
+{% block content %}
+
+
+    <div id="kt_app_content" class="app-content flex-column-fluid">
+        <!--begin::Content container-->
+        <div id="kt_app_content_container" class="app-container container-xxl">
+
+
+            <!--begin::پایه info-->
+            <div class="card mb-5 mb-xl-10">
+
+                <!--begin::کارت header-->
+                <div class="card-header border-0 cursor-pointer" role="button" data-bs-toggle="collapse" data-bs-target="#kt_account_profile_details" aria-expوed="true" aria-controls="kt_account_profile_details">
+                    <!--begin::کارت title-->
+                    <div class="card-title m-0">
+                        <h3 class="fw-bold m-0">اطلاعات کاربری</h3>
+                    </div>
+                    <!--end::کارت title-->
+                </div>
+                <!--begin::کارت header-->
+
+                <!--begin::Content-->
+                <div id="kt_account_settings_profile_details" class="collapse show">
+
+                    <!--begin::Form-->
+                    <form enctype="multipart/form-data" id="kt_account_profile_details_form" class="form fv-plugins-bootstrap5 fv-plugins-framework" novalidate="novalidate" method="post" action="{% url 'edit_profile' %}">
+                        {% csrf_token %}
+
+
+                        <!--begin::کارت body-->
+                        <div class="card-body border-top p-9">
+
+
+
+                            <!--begin::Input group-->
+                            <div class="row mb-6">
+                                <!--begin::Tags-->
+                                <label class="col-lg-4 col-form-label required fw-semibold fs-6">نام کاربری:</label>
+                                <!--end::Tags-->
+                                <!--begin::Col-->
+                                <div class="col-lg-8 fv-row fv-plugins-icon-container">
+                                    {{ form.username }}
+{#                                    <input type="text" name="company" class="form-control form-control-lg form-control-solid" placeholder="کمپانی name" value="Keenthemes">#}
+                                    <div class="fv-plugins-message-container invalid-feedback"></div></div>
+                                <!--end::Col-->
+                            </div>
+                            <!--end::Input group-->
+
+                            <!--begin::Input group-->
+                            <div class="row mb-6">
+                                <!--begin::Tags-->
+                                <label class="col-lg-4 col-form-label required fw-semibold fs-6">نام کامل:</label>
+                                <!--end::Tags-->
+                                <!--begin::Col-->
+                                <div class="col-lg-8">
+                                    <!--begin::Row-->
+
+                                    <div class="row">
+                                        <!--begin::Col-->
+                                        <div class="col-lg-6 fv-row fv-plugins-icon-container">
+
+                                            {{ form.first_name }}
+{#                                            <input type="text" name="fname" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="نام" value="مکس">#}
+                                            <div class="fv-plugins-message-container invalid-feedback"></div>
+                                        </div>
+                                        <!--end::Col-->
+
+                                        <!--begin::Col-->
+                                        <div class="col-lg-6 fv-row fv-plugins-icon-container">
+
+                                            {{ form.last_name }}
+{#                                            <input type="text" name="lname" class="form-control form-control-lg form-control-solid" placeholder="نام خانوادگی" value="اسمیت">#}
+                                            <div class="fv-plugins-message-container invalid-feedback"></div>
+                                        </div>
+                                        <!--end::Col-->
+                                    </div>
+                                    <!--end::Row-->
+                                </div>
+                                <!--end::Col-->
+                            </div>
+                            <!--end::Input group-->
+
+                            <!--begin::Input group-->
+{#                            <div class="row mb-6">#}
+{#                                <!--begin::Tags-->#}
+{#                                <label class="col-lg-4 col-form-label required fw-semibold fs-6">کمپانی</label>#}
+{#                                <!--end::Tags-->#}
+{#                                <!--begin::Col-->#}
+{#                                <div class="col-lg-8 fv-row fv-plugins-icon-container">#}
+{#                                    <input type="text" name="company" class="form-control form-control-lg form-control-solid" placeholder="کمپانی name" value="Keenthemes">#}
+{#                                    <div class="fv-plugins-message-container invalid-feedback"></div></div>#}
+{#                                <!--end::Col-->#}
+{#                            </div>#}
+                            <!--end::Input group-->
+
+                            <!--begin::Input group-->
+                            <div class="row mb-6">
+                                <!--begin::Tags-->
+                                <label class="col-lg-4 col-form-label fw-semibold fs-6">
+                                    <span class="required">موبایل:</span>
+                                </label>
+                                <!--end::Tags-->
+                                <!--begin::Col-->
+                                <div class="col-lg-8 fv-row fv-plugins-icon-container">
+                                    {{ form.mobile }}
+{#                                    <input type="tel" name="phone" class="form-control form-control-lg form-control-solid" placeholder="تلفن number" value="044 3276 454 935">#}
+                                    <div class="fv-plugins-message-container invalid-feedback"></div></div>
+                                <!--end::Col-->
+                            </div>
+                            <!--end::Input group-->
+
+                            <!--begin::Input group-->
+                            <div class="row mb-6">
+                                <!--begin::Tags-->
+                                <label class="col-lg-4 col-form-label fw-semibold fs-6">
+                                    <span class="required">ایمیل:</span>
+                                </label>
+                                <!--end::Tags-->
+                                <!--begin::Col-->
+                                <div class="col-lg-8 fv-row fv-plugins-icon-container">
+                                    {{ form.email }}
+{#                                    <input type="tel" name="phone" class="form-control form-control-lg form-control-solid" placeholder="تلفن number" value="044 3276 454 935">#}
+                                    <div class="fv-plugins-message-container invalid-feedback"></div></div>
+                                <!--end::Col-->
+                            </div>
+                            <!--end::Input group-->
+
+
+                        </div>
+                        <!--end::کارت body-->
+
+                        <!--begin::Actions-->
+                        <div class="card-footer d-flex justify-content-end py-6 px-9">
+{#                            <button type="reset" class="btn btn-light btn-active-light-primary me-2">لغو</button>#}
+                            <button type="submit" class="btn btn-primary" id="kt_account_profile_details_submit">ذخیره تغییرات</button>
+                        </div>
+                        <!--end::Actions-->
+                        <input type="hidden">
+                    </form>
+                    <!--end::Form-->
+
+                </div>
+                <!--end::Content-->
+            </div>
+            <!--end::پایه info-->
+
+
+        </div>
+        <!--end::Content container-->
+    </div>
+
+
+
+
+
+
+{% endblock %}

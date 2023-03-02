@@ -1,0 +1,135 @@
+{% extends 'business_owner_panel/dashboard_base.html' %}
+{% load static %}
+
+{% block title %}
+    ویرایش مشتری
+{% endblock %}
+
+{% block content %}
+    {% for message in messages %}
+
+        {% if message.tags == "success" %}
+            <div class="alert alert-success alert-dismissible fade show">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+                {{message}}
+            </div>
+        {% elif message.tags == "error" %}
+            <div class="alert alert-danger alert-dismissible fade show">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                {{message}}
+            </div>
+        {% endif %}
+
+{% endfor %}
+
+
+
+<div id="kt_app_content_container" class="app-container container-xxl">
+
+
+
+    <div class="card pt-4 mb-6 mb-xl-9">
+
+        <!--begin::کارت header-->
+        <div class="card-header border-0">
+            <!--begin::کارت title-->
+            <div class="card-title">
+																<h2>ویرایش مشتری</h2>
+															</div>
+            <!--end::کارت title-->
+        </div>
+        <!--end::کارت header-->
+
+        <!--begin::کارت body-->
+        <div class="card-body pt-0 pb-5">
+
+            <!--begin::Form-->
+            <form method="post" class="form fv-plugins-bootstrap5 fv-plugins-framework" action="" id="kt_ecommerce_customer_profile">
+                {% csrf_token %}
+
+
+
+
+                <!--begin::Row-->
+                <div class="row row-cols-1 row-cols-md-2">
+                    <!--begin::Col-->
+                    <div class="col">
+
+                        <!--begin::Input group-->
+                        <div class="fv-row mb-7 fv-plugins-icon-container">
+                            <!--begin::Tags-->
+                            <label class="fs-6 fw-semibold mb-2">
+                                <span>موبایل</span>
+                            </label>
+                            <!--end::Tags-->
+
+                            <!--begin::Input-->
+                            {{ form.mobile }}
+{#                            <input type="email" class="form-control form-control-solid" placeholder="" name="gen_email" value="max@kt.com">#}
+                            <!--end::Input-->
+
+                            <div class="fv-plugins-message-container invalid-feedback"></div></div>
+                        <!--end::Input group-->
+                    </div>
+                    <!--end::Col-->
+
+                    <!--begin::Col-->
+                    <div class="col">
+                        <!--begin::Input group-->
+                        <div class="fv-row mb-7">
+                            <!--begin::Tags-->
+                            <label class="fs-6 fw-semibold mb-2">
+                                <span>نام کاریری</span>
+                            </label>
+                            <!--end::Tags-->
+                            <!--begin::Input-->
+                            {{ form.username }}
+{#                            <input type="email" class="form-control form-control-solid" placeholder="" name="bill_email" value="info@keenthemes.com">#}
+                            <!--end::Input-->
+                        </div>
+                        <!--end::Input group-->
+                    </div>
+                    <!--end::Col-->
+                </div>
+                <!--end::Row-->
+
+                <div class="d-flex justify-content-end">
+                    <!--begin::Button-->
+                    <button type="submit" id="kt_ecommerce_customer_profile_submit" class="btn btn-primary">
+                        <span class="indicator-label">ذخیره</span>
+                        <span class="indicator-progress">لطفا صبر کنید...
+                            <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                        </span>
+                    </button>
+                    <!--end::Button-->
+                </div>
+
+            </form>
+            <!--end::Form-->
+
+        </div>
+        <!--end::کارت body-->
+
+    </div>
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
+
+
+{% block jsfiles %}
+
+{% endblock %}

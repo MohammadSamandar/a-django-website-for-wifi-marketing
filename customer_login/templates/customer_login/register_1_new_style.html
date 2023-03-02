@@ -1,0 +1,74 @@
+{% extends 'customer_login/base.html' %}
+{% load static %}
+{% block body %}
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+
+
+    <script>
+        function doLogin() {
+            document.sendin.username.value = document.login.username.value;
+            document.sendin.password.value = hexMD5('$(chap-id)' + document.login.password.value + '$(chap-challenge)');
+            document.sendin.submit();
+            return false;
+        }
+    </script>
+{#    $(endif)#}
+
+
+    <div class="login-wrap">
+	    <div class="login-html">
+		    <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">برای استفاده از اینترنت رایگان، شماره موبایل خود را وارد کنید.</label>
+{#		    <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up</label>#}
+		    <div class="login-form">
+
+{#            <a href="https://ashaarvin.com"><img class="fblogo" src="{% static 'images/ASHAARVIN_logo.png' %}"></a>#}
+{##}
+{#                <img id="logo" class="fblogo" src="{% static 'images/shandiz.png' %}" style="height: 220px; width:250px;">#}
+
+                <form action="." method="post">
+
+
+                        {% csrf_token %}
+
+                        <div class="group">
+{#					        <label for="user" class="label">شماره موبایل</label>#}
+                            <br>
+                            <input id="user" type="text" class="input"  required name="mobile" placeholder="شماره موبایل خود را وارد کنید">
+                        </div>
+
+				        <div class="group">
+                            <button class="button" type="submit" value="ثبت">ثبت</button>
+{#					        <input type="submit" class="button" value="ثبت">#}
+                        </div>
+				        <div class="hr"></div>
+
+
+                        <div class="group">
+                            <button id="restooran" class="button" type="button"><a href="https://shandizgalleria.menew.pw">منوی رستوران</a></button>
+                        </div>
+
+                        <div class="group">
+                            <button id="vip" class="button" type="button"><a href="{% url 'vip_login' %}">جهت ورود به پنل مشتریان VIP</a></button>
+                        </div>
+
+                    </form>
+
+		    </div>
+	    </div>
+    </div>
+
+{% endblock %}
+
+
+

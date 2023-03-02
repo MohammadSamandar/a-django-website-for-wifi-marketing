@@ -1,0 +1,32 @@
+{% extends 'customer_login/base.html' %}
+{% load static %}
+{% block body %}
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <div class="fadeIn first">
+        <div>
+            <h2>ورود / ثبت نام</h2>
+        </div>
+      <img src="{% static 'images/mobile.png' %}" id="icon" alt="User Icon" width="150"/>
+    </div>
+    <form action=".." method="post">
+        {% csrf_token %}
+      <input type="text"  required class="fadeIn second" name="mobile" placeholder="شماره موبایل خود را وارد کنید">
+      <input type="submit" class="fadeIn fourth" value="ثبت">
+    </form>
+
+  </div>
+</div>
+{% endblock %}

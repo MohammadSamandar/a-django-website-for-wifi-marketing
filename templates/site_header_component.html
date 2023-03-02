@@ -1,0 +1,95 @@
+{% load static %}
+{% load thumbnail %}
+
+<header class="main-header w-100">
+        <nav class="navbar navbar-expand-xl navbar-light sticky-header">
+            <div class="container d-flex align-items-center justify-content-lg-between position-relative">
+                <a href="index.html" class="navbar-brand d-flex align-items-center mb-md-0 text-decoration-none">
+                    {% thumbnail site_setting.site_logo "60x60" crop='center' quality=100 as im %}
+                        <img src="{{ im.url }}" alt="logo" class="img-fluid logo-white">
+                        <img src="{{ im.url }}" alt="logo" class="img-fluid logo-color">
+                    {% endthumbnail %}
+{#                    <img src="{{ site_setting.site_logo.url }}" alt="logo" class="img-fluid logo-white">#}
+{#                    <img src="{{ site_setting.site_logo.url }}" alt="logo" class="img-fluid logo-color">#}
+                </a>
+
+                <a class="navbar-toggler position-absolute right-0 border-0" href="#offcanvasWithBackdrop" role="button">
+                    <span class="far fa-bars" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBackdrop" aria-controls="offcanvasWithBackdrop"></span>
+                </a>
+
+                <div class="collapse navbar-collapse justify-content-center">
+                    <ul class="nav col-12 col-md-auto justify-content-center main-menu">
+                        <li class="nav-item">
+                            <a class="nav-link"
+                                href="{% url 'index_page' %}" role="button">
+                                خانه
+                            </a>
+
+                        </li>
+                        <li class="nav-item"><a href="{% url 'index_blog' %}" class="nav-link">بلاگ</a></li>
+                        <li class="nav-item"><a href="{% url 'services_page' %}" class="nav-link">خدمات</a></li>
+                        <li class="nav-item"><a href="{% url 'our_customer_page' %}" class="nav-link active">مشتریان ما</a></li>
+                        <li class="nav-item"><a href="{% url 'contact-us-page' %}" class="nav-link">تماس با ما</a></li>
+                        <li class="nav-item"><a href="{% url 'price_page' %}" class="nav-link">قیمت</a></li>
+                    </ul>
+                </div>
+
+                <div class="action-btns text-end me-5 me-lg-0 d-none d-md-block d-lg-block">
+                {% if request.user.is_superuser %}
+                            <a href="/admin" class="btn btn-soft-info text-decoration-none me-2">پنل ادمین</a>
+                            <a href="{% url 'logout_page' %}" class="btn btn-link text-decoration-none me-2">خروج</a>
+                    {% elif request.user.is_authenticated %}
+                        <a href="{% url 'user_panel_dashboard' %}" class="btn btn-soft-info text-decoration-none me-2">پنل کاربری</a>
+                        <a href="{% url 'logout_page' %}" class="btn btn-link text-decoration-none me-2">خروج</a>
+                    {% else %}
+                    <a href="{% url 'login_page' %}" class="btn btn-link text-decoration-none me-2">ورود</a>
+                    <a href="{% url 'register_page' %}" class="btn btn-link text-decoration-none me-2">ثبت نام</a>
+                    <a href="request-demo.html" class="btn btn-primary">درخواست</a>
+                {% endif %}
+
+                </div>
+
+                <!--offcanvas menu start-->
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasWithBackdrop">
+                    <div class="offcanvas-header d-flex align-items-center mt-4">
+                        <a href="{% url 'index_page' %}" class="d-flex align-items-center mb-md-0 text-decoration-none">
+                            <img src="{% static 'img/logo-color.png' %}" alt="logo" class="img-fluid ps-2">
+                        </a>
+                        <button type="button" class="close-btn text-danger" data-bs-dismiss="offcanvas" aria-label="Close"><i class="far fa-close"></i></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <ul class="nav col-12 col-md-auto justify-content-center main-menu">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'index_page' %}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    خانه
+                                </a>
+
+                            </li>
+                            <li class="nav-item"><a href="{% url 'index_blog' %}" class="nav-link">بلاگ</a></li>
+                            <li class="nav-item"><a href="{% url 'services_page' %}" class="nav-link">معرفی</a></li>
+                            <li class="nav-item"><a href="{% url 'our_customer_page' %}" class="nav-link">مشتریان ما</a></li>
+                            <li class="nav-item"><a href="{% url 'contact-us-page' %}" class="nav-link">تماس با ما</a></li>
+                            <li class="nav-item"><a href="{% url 'price_page' %}" class="nav-link">قیمت</a></li>
+                        </ul>
+                        <div class="action-btns mt-4 pe-3">
+
+                            {% if request.user.is_superuser %}
+                            <a href="/admin" class="btn btn-soft-info text-decoration-none me-2">پنل ادمین</a>
+                            <a href="{% url 'logout_page' %}" class="btn btn-link text-decoration-none me-2">خروج</a>
+                            {% elif request.user.is_authenticated %}
+                            <a href="login.html" class="btn btn-soft-info text-decoration-none me-2">پنل کاربری</a>
+                            <a href="{% url 'logout_page' %}" class="btn btn-link text-decoration-none me-2">خروج</a>
+                            {% else %}
+                            <a href="{% url 'login_page' %}" class="btn btn-link text-decoration-none me-2">ورود</a>
+                            <a href="{% url 'register_page' %}" class="btn btn-link text-decoration-none me-2">ثبت نام</a>
+                            <a href="request-demo.html" class="btn btn-primary">درخواست</a>
+                            {% endif %}
+
+                        </div>
+                    </div>
+
+                </div>
+                <!--offcanvas menu end-->
+            </div>
+        </nav>
+    </header>

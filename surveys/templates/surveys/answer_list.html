@@ -1,0 +1,74 @@
+{% extends get_master_template %}
+{% load i18n static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css"/>
+    <link rel="stylesheet" href="{% static 'surveys/css/rating.css' %}"/>
+{% endblock %}
+
+{% block content %}
+    <div class="container px-5 py-5">
+        <section>
+            <div class="py-16 lg:items-end lg:justify-between lg:flex sm:px-6 lg:px-8">
+                <h2 class="max-w-xl text-2xl font-bold sm:text-3xl">
+                    {% trans "Result" %} - {{ object.name }}
+                </h2>
+
+                <div class="btn-group">
+                    <div class="flex -space-x-4 hover:space-x-1 float-right">
+                        {% if user.is_superuser %}
+                            <a href="{% url 'surveys:admin_download_survey' survey.slug %}"
+                               class="z-20 block p-4 text-purple-700 transition-all bg-purple-100 border-2 border-white rounded-full active:bg-purple-50 hover:scale-110 focus:outline-none focus:ring"
+                               type="button">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                                </svg>
+                            </a>
+
+                            <a href="{% url 'surveys:admin_summary_survey' survey.slug %}"
+                               class="z-20 block p-4 text-blue-700 transition-all bg-blue-100 border-2 border-white rounded-full active:bg-blue-50 hover:scale-110 focus:outline-none focus:ring"
+                               type="button">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"/>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"/>
+                                </svg>
+                            </a>
+                        {% endif %}
+                        <a href="{% url 'surveys:create' survey.slug %}"
+                           class="z-20 block p-4 text-green-700 transition-all bg-green-100 border-2 border-white rounded-full active:bg-green-50 hover:scale-110 focus:outline-none focus:ring"
+                           type="button">
+                            {% include "surveys/buttons/add_button.html" %}
+                        </a>
+                        <a href="#"
+                           class="button-share z-20 block p-4 text-amber-700 transition-all bg-amber-100 border-2 border-white rounded-full active:bg-amber-50 hover:scale-110 focus:outline-none focus:ring"
+                           type="button" data-share-link="{% url 'surveys:share_link' survey.slug %}">
+                            {% include "surveys/buttons/share_button.html" %}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        {% if page_obj %}
+            <div class="grid xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {% for object in page_obj %}
+                    {% include 'surveys/components/card_list_answer.html' %}
+                {% endfor %}
+            </div>
+            <div class="py-10">
+                {% include 'surveys/components/pagination.html' %}
+            </div>
+        {% else %}
+            {% include 'surveys/components/empty_state.html' %}
+        {% endif %}
+    </div>
+
+    {% include 'surveys/components/modal_delete.html' %}
+
+{% endblock %}
+
+{% block extra_js %}
+    <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
+    {% include 'surveys/components/modal_delete_js.html' %}
+    {% include 'surveys/components/share_link_button_js.html' %}
+{% endblock %}

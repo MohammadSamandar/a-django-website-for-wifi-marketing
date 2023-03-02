@@ -1,0 +1,56 @@
+{% load render_partial %}
+{% load static %}
+
+<!DOCTYPE html>
+<html direction="rtl" dir="rtl" style="direction: rtl">
+
+
+
+    <!--begin::Head-->
+	<head><base href="../../../"/>
+		<title>{% block title %}{% endblock %}</title>
+		<meta charset="utf-8" />
+		<meta name="description" content="The most advanced پنل ادمین بوت استراپ Theme on Themeforest trusted by 100,000 beginners و professionals. Multi-demo, حالت تیره, RTL support و complete React, Angular, Vue, Asp.Net Core, Rails, Spring, Blazor, Django, Flask & Laravel versions. Grab your copy now و get life-time updates for free." />
+		<meta name="keywords" content="metronic, bootstrap, bootstrap 5, angular, VueJs, React, Asp.Net Core, Rails, Spring, Blazor, Django, Flask & Laravel starter kits, admin themes, web design, figma, web development, free templates, free admin themes, bootstrap theme, bootstrap template, bootstrap dashboard, bootstrap dak mode, bootstrap button, bootstrap datepicker, bootstrap timepicker, fullcalendar, datatables, flaticon" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta property="og:locale" content="en_US" />
+		<meta property="og:type" content="article" />
+		<meta property="og:title" content="مترونیک " />
+		<meta property="og:url" content="https://keenthemes.com/metronic" />
+		<meta property="og:site_name" content="Keenthemes | مترونیک" />
+		<link rel="canonical" href="Https://preview.keenthemes.com/metronic8" />
+		<link rel="shortcut icon" href="{% static 'business_owner_panel/media/logos/favicon.ico' %}" />
+		<!--begin::Fonts(mوatory for all pages)-->
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700" />
+		<!--end::Fonts-->
+		<!--begin::Global Stylesheets Bundle(mوatory for all pages)-->
+		<link href="{% static 'business_owner_panel/plugins/global/plugins.bundle.rtl.css' %}" rel="stylesheet" type="text/css" />
+		<link href="{% static 'business_owner_panel/css/style.bundle.rtl.css' %}" rel="stylesheet" type="text/css" />
+		<!--end::Global Stylesheets Bundle-->
+    </head>
+
+
+<body id="kt_body" class="app-blank app-blank bgi-size-cover bgi-position-center bgi-no-repeat">
+{% block content %}
+
+
+
+{% endblock %}
+
+
+
+
+<!--begin::Javascript-->
+		<script>var hostUrl = "assets/";</script>
+		<!--begin::Global Javascript Bundle(mوatory for all pages)-->
+		<script src="{% static 'business_owner_panel/plugins/global/plugins.bundle.js' %}"></script>
+		<script src="{% static 'business_owner_panel/js/scripts.bundle.js' %}"></script>
+		<!--end::Global Javascript Bundle-->
+		<!--begin::سفارشی Javascript(used for this page only)-->
+		<script src="{% static 'business_owner_panel/js/custom/authentication/sign-in/general.js' %}"></script>
+		<!--end::سفارشی Javascript-->
+		<!--end::Javascript-->
+</body>
+
+
+</html>

@@ -1,0 +1,34 @@
+{% extends 'business_owner_panel/dashboard_base.html' %}
+{% load static %}
+
+{% block title %}
+    ایمپورت کردن مشتریان
+{% endblock %}
+
+{% block content %}
+    <!--begin::Content container-->
+    <div id="kt_app_content_container" class="app-container container-fluid">
+
+
+    <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <input type="file" name="importData">
+
+    <p>Please select format of file.</p>
+
+
+    <button class="btn btn-primary" type="submit">Import</button>
+
+  </form>
+
+    </div>
+    <!--end::Content container-->
+
+{% endblock %}
+
+
+{% block jsfiles %}
+
+{% endblock %}
+
