@@ -8,6 +8,15 @@
 {% block content %}
     <!--begin::Content container-->
     <div id="kt_app_content_container" class="app-container container-fluid">
+    {% for message in messages %}
+
+        {% if message.tags == "success" %}
+            <div class="alert alert-success alert-dismissible fade show">
+                {{message}}
+            </div>
+        {% elif message.tags == "error" %}
+        {% endif %}
+    {% endfor %}
 
 
     <form method="post" enctype="multipart/form-data">

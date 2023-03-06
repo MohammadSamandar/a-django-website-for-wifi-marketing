@@ -1,0 +1,14 @@
+kind: ExternalService
+name: shandizgalleria
+spec:
+  image_pull_policy: Always
+  port: 80
+  source:
+    context: .
+    media_path: ''
+    project_type: django
+    python_version: '3.11'
+    static_path: static
+    wsgi: shandizgalleria.wsgi
+  resources:
+    memory: 600Mi

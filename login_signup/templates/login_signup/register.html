@@ -107,6 +107,19 @@
 								<!--end::Separator-->
 
 
+								<!--begin::Input group=-->
+								<div class="fv-row mb-8">
+{#                                    {{ login_form.email.label_tag }}#}
+									<!--begin::ایمیل-->
+                                    {{ register_form.email }}
+{#									<input type="text" placeholder="ایمیل" name="email" autocomplete="off" class="form-control bg-transparent" />#}
+									<!--end::ایمیل-->
+                                    <br><br>
+                                    {{ register_form.email.errors }}
+								</div>
+								<!--end::Input group=-->
+
+
 
                                 <!--begin::Input group=-->
 								<div class="fv-row mb-8">
@@ -115,21 +128,12 @@
                                     {{ register_form.mobile }}
 {#									<input type="text" placeholder="ایمیل" name="email" autocomplete="off" class="form-control bg-transparent" />#}
 									<!--end::ایمیل-->
+                                    <br><br>
                                     {{ register_form.mobile.errors }}
 								</div>
 								<!--end::Input group=-->
 
 
-								<!--begin::Input group=-->
-								<div class="fv-row mb-8">
-{#                                    {{ login_form.email.label_tag }}#}
-									<!--begin::ایمیل-->
-                                    {{ register_form.email }}
-{#									<input type="text" placeholder="ایمیل" name="email" autocomplete="off" class="form-control bg-transparent" />#}
-									<!--end::ایمیل-->
-                                    {{ register_form.email.errors }}
-								</div>
-								<!--end::Input group=-->
 
 
 								<div class="fv-row mb-3">

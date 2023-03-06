@@ -189,12 +189,10 @@ def customers_export(request):
 @login_required
 def customers_import(request):
 
-
     if request.method == 'POST':
         person_resource = CustomerResource(request.user)
         dataset = Dataset()
         new_persons = request.FILES['importData']
-
         if not new_persons.name.endswith('xlsx'):
             messages.info(request, 'فرمت فایل اشتباهه! حواست کجاست')
             return render(request, 'business_owner_panel/customers_import.html')
@@ -202,10 +200,32 @@ def customers_import(request):
         imported_data = dataset.load(new_persons.read(), format='xlsx')
         for data in imported_data:
 
-            value = BusinessCustomer(mobile=data[0], username=data[0])
-            value.save()
-            b = Business.objects.filter(business_owner_id=request.user.id)
-            value.business.set(b)
+            try:
+                user_exist_or_not = BusinessCustomer.objects.get(username=data[0])
+                messages.error(request, "user already exists")
+                # return redirect("some_error_page")
+
+
+
+            except BusinessCustomer.DoesNotExist:
+
+                b = Business.objects.get(business_owner_id=request.user.id)
+                value = BusinessCustomer(mobile=data[0], username=data[0], is_business_customer=True, business=b)
+                # value.business = b
+                value.save()
+            messages.success(request, "مشتریان با موفقیت اضافه شدند!")
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

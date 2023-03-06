@@ -16,5 +16,5 @@ class CustomerResource(resources.ModelResource):
     class Meta:
         model = BusinessCustomer
         skip_unchanged = True
-        report_skipped = False
-        fields = ('mobile')
+        report_skipped = True
+        fields = ('id','mobile')

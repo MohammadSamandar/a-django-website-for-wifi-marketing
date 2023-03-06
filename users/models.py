@@ -8,7 +8,7 @@ class SiteUser(AbstractUser):
     is_business_customer = models.BooleanField('business customer', default=False)
     is_business_owner = models.BooleanField('business owner', default=False)
     mobile = models.CharField(max_length=11, null=True)
-
+    # username = None
 
 
 

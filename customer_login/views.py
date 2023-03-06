@@ -1,3 +1,4 @@
+from django.contrib.auth.hashers import make_password
 from django.shortcuts import render, redirect
 from .models import BusinessCustomer
 from .forms import RegisterForm

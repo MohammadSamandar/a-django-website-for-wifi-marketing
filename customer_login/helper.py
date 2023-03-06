@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from kavenegar import *
 from shandizgalleria.settings import Kavenegar_API
 from random import randint

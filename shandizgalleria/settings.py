@@ -11,7 +11,13 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 import os
 from pathlib import Path
+import os
+env_var = os.environ
 
+import environ
+# Initialise environment variables
+env = environ.Env()
+environ.Env.read_env()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -20,12 +26,19 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-(2um#w4&ga+8u=(7)$d3e&l-#s#da%!4s8x^57a@k-dhw(m-ds'
+SECRET_KEY =env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'shandizgalleria-smartasha.fandogh.cloud',
+    'www.shandizgalleria-smartasha.fandogh.cloud',
+    'shandizgalleria.smartasha.ir',
+    'www.shandizgalleria.smartasha.ir',
+
+
+]
 
 
 # Application definition
@@ -91,11 +104,22 @@ WSGI_APPLICATION = 'shandizgalleria.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': env('DATABASE_NAME'),
+        'USER': env('DATABASE_USER'),
+        'PASSWORD': env('DATABASE_PASS'),
+        'HOST': env('DATABASE_HOST'),
+        'PORT': env('DATABASE_PORT'),
     }
 }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -171,10 +195,11 @@ LOGIN_URL = 'login/'
 # EMAIL_PORT = 587
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_USE_TLS = True
-EMAIL_HOST = 'mail.smartasha.ir'
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = False
+EMAIL_HOST = '5.9.42.254'
 EMAIL_HOST_USER = 'info@smartasha.ir'
-EMAIL_HOST_PASSWORD = ';*yn.$?Y=2A$'
+EMAIL_HOST_PASSWORD = '1234mailpass'
 EMAIL_PORT = 587
 
 
@@ -195,3 +220,11 @@ DJANGO_TICKET_EMAIL_NOTIFICATIONS_TO="xxx"
 
 IMPORT_EXPORT_USE_TRANSACTIONS = True
 
+
+
+
+CSRF_TRUSTED_ORIGINS = [
+
+    'https://shandizgalleria-smartasha.fandogh.cloud',
+    'https://shandizgalleria-smartasha.fandogh.cloud',
+]

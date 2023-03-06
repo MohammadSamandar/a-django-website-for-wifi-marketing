@@ -11,7 +11,7 @@ class UserProfileForm(forms.ModelForm):
     class Meta:
         model = BusinessOwner
 
-        fields = ['username', 'first_name', 'last_name', 'avatar', 'mobile', 'email']
+        fields = ['username', 'first_name', 'last_name', 'mobile', 'email']
         widgets = {
             'username': forms.TextInput(attrs={
                 'class': 'form-control form-control-lg form-control-solid',
@@ -25,9 +25,7 @@ class UserProfileForm(forms.ModelForm):
                 'class': 'form-control form-control-lg form-control-solid mb-3 mb-lg-0',
                 'placeholder': 'نام خانوادگی'
             }),
-            'avatar': forms.FileInput(attrs={
-                'class': 'bi bi-pencil-fill fs-7'
-            }),
+
             'mobile': forms.TextInput(attrs={
                 'class': 'form-control form-control-lg form-control-solid'
             }),
