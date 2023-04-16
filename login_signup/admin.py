@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import BusinessOwner, SiteUser
+from .models import BusinessOwner
 # Register your models here.
 
 class BusinessOwner_Admin(admin.ModelAdmin):

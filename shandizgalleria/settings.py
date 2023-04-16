@@ -11,9 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 import os
 from pathlib import Path
-import os
 env_var = os.environ
-
 import environ
 # Initialise environment variables
 env = environ.Env()
@@ -36,6 +34,7 @@ ALLOWED_HOSTS = [
     'www.shandizgalleria-smartasha.fandogh.cloud',
     'shandizgalleria.smartasha.ir',
     'www.shandizgalleria.smartasha.ir',
+    '127.0.0.1',
 
 
 ]
@@ -44,6 +43,7 @@ ALLOWED_HOSTS = [
 # Application definition
 
 INSTALLED_APPS = [
+    'django.contrib.sites',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -56,8 +56,8 @@ INSTALLED_APPS = [
     'login_signup',
     'business_owner_panel',
     'customer_login',
-    'ticket',
     'surveys',
+    'widget_tweaks',
 
 
 
@@ -65,6 +65,7 @@ INSTALLED_APPS = [
     'django_render_partial',
     'sorl.thumbnail',
     'import_export',
+    'notifications',
 ]
 
 MIDDLEWARE = [
@@ -102,24 +103,24 @@ WSGI_APPLICATION = 'shandizgalleria.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        'NAME': env('DATABASE_NAME'),
-        'USER': env('DATABASE_USER'),
-        'PASSWORD': env('DATABASE_PASS'),
-        'HOST': env('DATABASE_HOST'),
-        'PORT': env('DATABASE_PORT'),
-    }
-}
-
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#         'NAME': env('DATABASE_NAME'),
+#         'USER': env('DATABASE_USER'),
+#         'PASSWORD': env('DATABASE_PASS'),
+#         'HOST': env('DATABASE_HOST'),
+#         'PORT': env('DATABASE_PORT'),
 #     }
 # }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -178,10 +179,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 Kavenegar_API = '685731774C596932364B416F782B7450324B6D2B6D3746456B575A474B71696B7175395A7A72745A4733303D'
 AUTH_USER_MODEL = 'users.SiteUser'
-LOGIN_URL = 'login/'
+LOGIN_URL = '/login/'
 
 
 
@@ -208,14 +208,6 @@ SITE_ID = 1
 
 
 
-DJANGO_ADMIN_NAME= 'admin'
-DJANGO_ADMIN_EMAIL= 'm.samandarhd@gmail.com'
-DJANGO_TICKET_INBOX_SERVER="xxx"
-DJANGO_TICKET_INBOX_USER="xxx"
-DJANGO_TICKET_INBOX_PASSWORD="xxx"
-DJANGO_TICKET_EMAIL_NOTIFICATIONS_FROM="xxx"
-DJANGO_TICKET_EMAIL_NOTIFICATIONS_TO="xxx"
-
 
 
 IMPORT_EXPORT_USE_TRANSACTIONS = True
@@ -228,3 +220,4 @@ CSRF_TRUSTED_ORIGINS = [
     'https://shandizgalleria-smartasha.fandogh.cloud',
     'https://shandizgalleria-smartasha.fandogh.cloud',
 ]
+

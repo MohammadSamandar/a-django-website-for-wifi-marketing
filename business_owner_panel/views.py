@@ -215,21 +215,6 @@ def customers_import(request):
                 value.save()
             messages.success(request, "مشتریان با موفقیت اضافه شدند!")
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     return render(request, 'business_owner_panel/customers_import.html')
 
 
@@ -254,6 +239,7 @@ def panel_sidebar_component(request):
     context = {
 
     }
-    return render(request, 'business_owner_panel/components_references/sidebar_component.html', context)
+    return render(request,
+                  'business_owner_panel/sidebar_component.html', context)
 
 

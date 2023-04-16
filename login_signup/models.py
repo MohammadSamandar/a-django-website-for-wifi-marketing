@@ -28,4 +28,8 @@ class BusinessOwner(SiteUser):
 
 
 
-
+# class Department(models.Model):
+#     Name = models.CharField(verbose_name="Bölüm", max_length=11)
+#     depadmin = models.ManyToManyField(BusinessOwner)
+#     def __unicode__(self):
+#         return self.name
