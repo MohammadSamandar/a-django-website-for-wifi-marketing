@@ -57,15 +57,12 @@ INSTALLED_APPS = [
     'business_owner_panel',
     'customer_login',
     'surveys',
-    'widget_tweaks',
-
-
 
 
     'django_render_partial',
     'sorl.thumbnail',
     'import_export',
-    'notifications',
+
 ]
 
 MIDDLEWARE = [
