@@ -22,73 +22,8 @@
 
 
 {% block content %}
-<div class="wrapper">
-        <!-- Sidebar  -->
-        {% render_partial 'business_owner_panel.views.panel_sidebar_component' %}
 
-        <!-- Page Content  -->
-        <div id="content">
-
-
-            <!-- header -->
-            {% render_partial 'business_owner_panel.views.panel_header_component' %}
-
-
-            <!-- main/body content -->
-            <div class="main-content">
-                <div class="row">
-                    <div class="col-lg-9">
-
-                        <h1>{{ lesson.title  }}</h1>
-                            <br>
-                        <div class="featured-image">
-                            <img src="{{ lesson.image.thumbnail.url }}" class="rounded img-fluid" alt="{{ lesson.image.alt_text }}">
-
-                        </div>
-
-                        {{ lesson.short_description|safe }}
-                        <div class="line"></div>
-
-                        {{ lesson.lesson_content|safe }}
-
-                    </div>
-
-{#                    <div class="col-lg-3">#}
-{##}
-{#                            <div class="w3-border w3-padding-64 w3-center">#}
-{#                                <a href="#" >#}
-{#                                <p>تبلیغات</p>#}
-{#                                  {% thumbnail  lesson.image.url "356x361" quality=80 crop='center' as im %}#}
-{#                                    <img src="{{ im.url }}" class="rounded img-fluid" alt="Responsive image">#}
-{#                                  {% endthumbnail %}#}
-{#                                </a>#}
-{##}
-{#                            </div>#}
-{#                        <br><br><br><br>#}
-{#                        <div class="w3-border w3-padding-64 w3-center">#}
-{#                        <a href="#" >#}
-{#                                <p>تبلیغات</p>#}
-{#                            {% thumbnail  lesson.image.url "356x361" quality=80 crop='center' as im %}#}
-{#                                    <img src="{{ im.url }}" class="rounded img-fluid" alt="Responsive image">#}
-{#                            {% endthumbnail %}#}
-{#                            </a>#}
-{#                    </div>#}
-{#                    </div>#}
-                </div>
-            </div>
-
-
-
-
-
-
-
-           <!-- Pagination -->
-{#            {% render_partial 'python_course.views.pagination' %}#}
-            <!-- Footer -->
-            {% render_partial 'business_owner_panel.views.panel_footer_component' %}
-</div>
-</div>
+<h1>به پنل کاربری شاندیز گالریا خوش آمدید</h1>
 
 {% endblock %}
 

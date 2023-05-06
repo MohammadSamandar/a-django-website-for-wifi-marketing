@@ -28,7 +28,7 @@
 <body>
 
 
-{% block content %}
+
 <div class="wrapper">
         <!-- Sidebar  -->
         {% render_partial 'business_owner_panel.views.panel_sidebar_component' %}
@@ -45,9 +45,8 @@
             <div class="main-content">
                 <div class="row">
                     <div class="col-lg-9">
-
-
-
+                    {% block content %}
+                    {% endblock %}
 
 
                     </div>
@@ -65,11 +64,11 @@
            <!-- Pagination -->
 {#            {% render_partial 'python_course.views.pagination' %}#}
             <!-- Footer -->
-            {% render_partial 'business_owner_panel.views.panel_footer_component' %}
-</div>
+{#            {% render_partial 'business_owner_panel.views.panel_footer_component' %}#}
+    </div>
 </div>
 
-{% endblock %}
+
 
 
 
