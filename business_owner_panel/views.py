@@ -172,7 +172,7 @@ def DeleteCustomerPageView(request, customer_id):
 
 @login_required
 def customers_records(request):
-    return render(request, 'business_owner_panel/a/customers_records.html')
+    return render(request, 'business_owner_panel/customers_records.html')
 
 @login_required
 def customers_export(request):

@@ -31,23 +31,21 @@
 
 
                 <li class="active">
-                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle collapsed">درس ها</a>
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle collapsed">امور مشتریان</a>
 
                     <ul class="list-unstyled collapse" id="homeSubmenu" style="">
                         <li>
-                            <a href="{% url 'manage_lesson_list' %}">لیست درس ها</a>
+                            <a href="{% url 'customers_list' %}">لیست مشتریان</a>
                         </li>
                         <li>
-                            <a href="{% url 'lesson_create' %}">دسته بندی ها</a>
+                            <a href="{% url 'customers_export' %}">خروجی گرفتن</a>
                         </li>
 
                         <li>
-                            <a href="{% url 'lesson_create' %}">تصاویر</a>
+                            <a href="{% url 'customers_import' %}">درون ریزی</a>
                         </li>
 
-                        <li>
-                            <a href="{% url 'lesson_create' %}">متا تگ ها</a>
-                        </li>
+
 
 
                     </ul>
