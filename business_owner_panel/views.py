@@ -229,7 +229,7 @@ def sms(reqest):
 
 
 def panel_header_component(request):
-    return render(request, 'business_owner_panel/components_references/header_component.html')
+    return render(request, 'business_owner_panel/components_references/site_header_component.html')
 
 def panel_sidebar_component(request):
     # setting = Site_Setting.objects.filter(is_main_Setting=True).first()
@@ -237,6 +237,14 @@ def panel_sidebar_component(request):
 
     }
     return render(request,
-                  'business_owner_panel/sidebar_component.html', context)
+                  'business_owner_panel/components_references/site_sidebar_component.html', context)
 
+
+def panel_footer_component(request):
+    # setting = Site_Setting.objects.filter(is_main_Setting=True).first()
+    context = {
+
+    }
+    return render(request,
+                  'business_owner_panel/components_references/site_footer_component.html', context)
 

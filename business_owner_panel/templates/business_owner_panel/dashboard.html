@@ -17,7 +17,7 @@
 {% block title %}{{ lesson.title  }} | آکادمی پایتون {% endblock %}
 
 {% block header_reference %}
-    {% include 'python_course/header_references.html' %}
+    {% include 'business_owner_panel/components_references/site_header_component.html' %}
 
 {% endblock %}
 
@@ -27,14 +27,14 @@
 {% block content %}
 <div class="wrapper">
         <!-- Sidebar  -->
-        {% render_partial 'python_course.views.site_sidebar_component' %}
+        {% render_partial 'business_owner_panel.views.panel_sidebar_component' %}
 
         <!-- Page Content  -->
         <div id="content">
 
 
             <!-- header -->
-            {% render_partial 'python_course.views.site_header_component' %}
+            {% render_partial 'business_owner_panel.views.panel_header_component' %}
 
 
             <!-- main/body content -->
@@ -89,12 +89,12 @@
            <!-- Pagination -->
 {#            {% render_partial 'python_course.views.pagination' %}#}
             <!-- Footer -->
-            {% render_partial 'python_course.views.site_footer_component' %}
+            {% render_partial 'business_owner_panel.views.site_footer_component' %}
 </div>
 </div>
 
 {% endblock %}
 
 {% block footer_reference %}
-    {% include 'python_course/footer_references.html' %}
+    {% include 'business_owner_panel/components_references/site_footer_component.html' %}
 {% endblock %}
