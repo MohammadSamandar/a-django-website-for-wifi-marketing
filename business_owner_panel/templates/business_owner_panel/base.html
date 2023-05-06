@@ -1,4 +1,7 @@
 {% load static %}
+{% load thumbnail %}
+{#{% load poll_extras %}#}
+{% load render_partial %}
 
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
@@ -15,24 +18,64 @@
     <title>{% block title %}{% endblock %}</title>
 
 
-    {% block header_reference %}
+{% block header_reference %}
+    {% include 'business_owner_panel/components_references/header_references.html' %}
 
-
-    {% endblock %}
+{% endblock %}
 
 </head>
 
 <body>
 
 
-    {% block content %}
+{% block content %}
+<div class="wrapper">
+        <!-- Sidebar  -->
+        {% render_partial 'business_owner_panel.views.panel_sidebar_component' %}
 
-    {% endblock %}
+        <!-- Page Content  -->
+        <div id="content">
 
 
-    {% block footer_reference %}
+            <!-- header -->
+            {% render_partial 'business_owner_panel.views.panel_header_component' %}
 
-    {% endblock %}
+
+            <!-- main/body content -->
+            <div class="main-content">
+                <div class="row">
+                    <div class="col-lg-9">
+
+
+
+
+
+                    </div>
+
+
+                </div>
+            </div>
+
+
+
+
+
+
+
+           <!-- Pagination -->
+{#            {% render_partial 'python_course.views.pagination' %}#}
+            <!-- Footer -->
+            {% render_partial 'business_owner_panel.views.panel_footer_component' %}
+</div>
+</div>
+
+{% endblock %}
+
+
+
+{% block footer_reference %}
+    {% include 'business_owner_panel/components_references/footer_references.html' %}
+{% endblock %}
 
 </body>
 
