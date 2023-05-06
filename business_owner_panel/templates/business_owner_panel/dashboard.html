@@ -17,7 +17,7 @@
 {% block title %}داشبورد شاندیز گالریا {% endblock %}
 
 {% block header_reference %}
-    {% include 'business_owner_panel/components_references/site_header_component.html' %}
+    {% include 'business_owner_panel/components_references/header_references.html' %}
 
 {% endblock %}
 
@@ -89,12 +89,12 @@
            <!-- Pagination -->
 {#            {% render_partial 'python_course.views.pagination' %}#}
             <!-- Footer -->
-            {% render_partial 'business_owner_panel.views.site_footer_component' %}
+            {% render_partial 'business_owner_panel.views.panel_footer_component' %}
 </div>
 </div>
 
 {% endblock %}
 
 {% block footer_reference %}
-    {% include 'business_owner_panel/components_references/site_footer_component.html' %}
+    {% include 'business_owner_panel/components_references/footer_references.html' %}
 {% endblock %}
