@@ -21,6 +21,9 @@
     <orderEntry type="library" name="jquery-3.3.1.slim" level="application" />
     <orderEntry type="library" name="popper.js" level="application" />
     <orderEntry type="library" name="bootstrap" level="application" />
+    <orderEntry type="library" name="93f8a3b252" level="application" />
+    <orderEntry type="library" name="solid" level="application" />
+    <orderEntry type="library" name="fontawesome" level="application" />
   </component>
   <component name="TemplatesService">
     <option name="TEMPLATE_CONFIGURATION" value="Django" />

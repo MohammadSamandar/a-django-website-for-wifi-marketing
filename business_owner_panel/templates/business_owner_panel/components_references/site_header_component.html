@@ -10,7 +10,7 @@
                            <form action="{% url 'sms' %}" class="d-flex search-form" method="get">
                                <div class="input-group mb-3">
 
-                                    <input name="search_input" type="text" class="form-control input-text" placeholder="جستجو بین درس ها..." aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                    <input name="search_input" type="text" class="form-control input-text" placeholder="جستجو ..." aria-label="Recipient's username" aria-describedby="basic-addon2">
                                     <div class="input-group-append">
                                         <button class="btn btn-outline-warning btn-lg" type="button"><i class="fa fa-search"></i></button>
                                     </div>
@@ -54,7 +54,7 @@
                                     <a class="nav-link" href="{% url 'edit_profile' %}">ویرایش پروفایل</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{% url 'chnage_password' %}">تغییر رمر عبور</a>
+                                    <a class="nav-link" href="{% url 'chnage_password' %}">تغییر رمز عبور</a>
                                 </li>
 
                                     {% if request.user.is_authenticated %}

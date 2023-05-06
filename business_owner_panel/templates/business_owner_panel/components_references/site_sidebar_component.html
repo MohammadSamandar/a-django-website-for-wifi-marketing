@@ -30,7 +30,7 @@
 
 
 
-                <li class="active">
+                <li class="">
                     <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle collapsed">امور مشتریان</a>
 
                     <ul class="list-unstyled collapse" id="homeSubmenu" style="">
@@ -50,7 +50,29 @@
 
                     </ul>
                 </li>
+
+
+                <li class="">
+                    <a href="#homeSubmenu2" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle collapsed">ناحیه کاربری</a>
+
+                    <ul class="list-unstyled collapse" id="homeSubmenu2" style="">
+                        <li>
+                            <a href="{% url 'edit_profile' %}">ویرایش اطلاعات</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'chnage_password' %}">تغغیر رمز عبور</a>
+                        </li>
+
+
+
+                    </ul>
+                </li>
+
+
+
             </ul>
+
+
 
 
 
