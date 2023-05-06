@@ -1,20 +1,20 @@
-{% extends 'base.html' %}
+{% extends 'business_owner_panel/base.html' %}
 {% load static %}
 {% load thumbnail %}
 {#{% load poll_extras %}#}
 {% load render_partial %}
 
 {% block meta %}
-    <meta name="keywords" content="{{ lesson.meta_tags.keywords }}">
-    <meta name="description" content="{{ lesson.meta_tags.description |striptags }}">
-    <meta name="robots" content="{{ lesson.meta_tags.robots }}">
-    <link rel="canonical" href="{{ lesson.meta_tags.canonical }}" />
+{#    <meta name="keywords" content="{{ lesson.meta_tags.keywords }}">#}
+{#    <meta name="description" content="{{ lesson.meta_tags.description |striptags }}">#}
+{#    <meta name="robots" content="{{ lesson.meta_tags.robots }}">#}
+{#    <link rel="canonical" href="{{ lesson.meta_tags.canonical }}" />#}
 
 
 
 {% endblock %}
 
-{% block title %}{{ lesson.title  }} | آکادمی پایتون {% endblock %}
+{% block title %}داشبورد شاندیز گالریا {% endblock %}
 
 {% block header_reference %}
     {% include 'business_owner_panel/components_references/site_header_component.html' %}

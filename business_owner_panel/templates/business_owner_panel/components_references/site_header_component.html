@@ -7,7 +7,7 @@
                     <div class="row">
 
                        <div class="col-sm-12 col-md-11 col-lg-12 col-xl-12">
-                           <form action="{% url 'search_result_for_python_cource' %}" class="d-flex search-form" method="get">
+                           <form action="{% url 'sms' %}" class="d-flex search-form" method="get">
                                <div class="input-group mb-3">
 
                                     <input name="search_input" type="text" class="form-control input-text" placeholder="جستجو بین درس ها..." aria-label="Recipient's username" aria-describedby="basic-addon2">
@@ -47,30 +47,30 @@
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="nav navbar-nav ml-auto" id="main-nav">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{% url 'main-page' %}">صفحه اصلی</a>
+                                    <a class="nav-link" href="{% url 'user_panel_dashboard' %}">داشبورد</a>
                                 </li>
 
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{% url 'articles-view' %}">وبلاگ</a>
+                                    <a class="nav-link" href="{% url 'edit_profile' %}">ویرایش پروفایل</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{% url 'contact_us_page' %}">تماس با ما</a>
+                                    <a class="nav-link" href="{% url 'chnage_password' %}">تغییر رمر عبور</a>
                                 </li>
 
                                     {% if request.user.is_authenticated %}
+{#                                        <li class="nav-item">#}
+{#                                        <a class="nav-link" href="{% url 'user_panel_view' %}">پنل کاربری</a>#}
+{#                                        </li>#}
                                         <li class="nav-item">
-                                        <a class="nav-link" href="{% url 'user_panel_view' %}">پنل کاربری</a>
-                                        </li>
-                                        <li class="nav-item">
-                                        <a class="nav-link" href="{% url 'logout_view' %}">خروج</a>
+                                        <a class="nav-link" href="{% url 'logout_page' %}">خروج</a>
                                         </li>
 
                                     {% else %}
                                         <li class="nav-item">
-                                        <a class="nav-link" href="{% url 'login_view' %}">ورود</a>
+                                        <a class="nav-link" href="{% url 'login_page' %}">ورود</a>
                                         </li>
                                         <li class="nav-item">
-                                        <a class="nav-link" href="{% url 'register_view' %}">ثبت نام</a>
+                                        <a class="nav-link" href="{% url 'register_page' %}">ثبت نام</a>
                                         </li>
 
                                     {% endif %}
