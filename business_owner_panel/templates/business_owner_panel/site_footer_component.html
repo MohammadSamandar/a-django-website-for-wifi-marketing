@@ -1,0 +1,37 @@
+<div class="footer-basic">
+                <footer>
+{#                    <div class="social">#}
+{#                        <a class="telegram" href="#"><i class="fab fa-telegram-plane"></i></a>#}
+{#                        <a class="mail" href="#"><i class="fas fa-envelope"></i></a>#}
+{#                        <a class="instagram" href="#"><i class="fab fa-instagram"></i></a>#}
+{#                    </div>#}
+
+                        <ul class="social-icons list-unstyled list-inline mb-0">
+                            <li class="list-inline-item"><a href="#"><i class="fa fa-envelope"></i></a></li>
+                            <li class="list-inline-item"><a href="#"><i class="fab fa-instagram"></i></a></li>
+                            <li class="list-inline-item"><a href="#"><i class="fab fa-youtube"></i></a></li>
+                            <li class="list-inline-item"><a href="#"><i class="fab fa-telegram"></i></a></li>
+
+                        </ul>
+                    <br>
+                    <ul class="list-inline">
+                    {% for footer_link_box in footer_link_boxes %}
+                        {% for item in footer_link_box.footerlink_set.all %}
+                            <li class="list-inline-item"><a href="{{ item.url }}">{{ item.title }}</a></li>
+
+                        {% endfor %}
+                    {% endfor %}
+
+{#                        <li class="list-inline-item"><a href="{% url 'main_page' %}">آموزش پایتون</a></li>#}
+{#                        <li class="list-inline-item"><a href="#">بلاگ</a></li>#}
+{#                        <li class="list-inline-item"><a href="{% url 'contact_us_page' %}">تماس با ما</a></li>#}
+{#                        <li class="list-inline-item"><a href="#">ورود</a></li>#}
+{#                        <li class="list-inline-item"><a href="#">ثبت نام</a></li>#}
+                    </ul>
+                    <p class="copyright">
+                        {{ site_setting.copy_right_text }}
+                    </p>
+{#                    <p class="copyright">  © 1399 - 1401 تمامی حقوق برای آکادمی پایتون محفوظ است</p>#}
+                </footer>
+</div>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

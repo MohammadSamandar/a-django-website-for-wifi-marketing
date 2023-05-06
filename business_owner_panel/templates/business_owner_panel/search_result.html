@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+{% load render_partial %}
+{% load static %}
+
+
+
+{% block title %}{{ query }}{% endblock %}
+
+{% block header_reference %}{% include 'python_course/header_references.html' %}{% endblock %}
+
+{% block content %}
+<div class="wrapper">
+        <!-- Sidebar  -->
+{% render_partial 'python_course.views.site_sidebar_component' %}
+
+
+
+        <!-- Page Content  -->
+        <div id="content">
+            <!-- header -->
+            {% render_partial 'python_course.views.site_header_component' %}
+
+            <!-- main/body content -->
+            <div class="main-content">
+                <div>
+                    <h2>نتایج جستجو برای:
+                    {{ query }}
+                    </h2>
+                </div>
+
+                <br>
+                <div class="row gy-4">
+                    <div class="col-lg-12">
+                        <div class="row gy-4">
+
+                            {% for item in page_obj %}
+                                <div class="col-sm-4">
+
+                                    <div class="card">
+                                        <div class="card-body">
+
+                                            <img src="{{ item.image.url }}" class="card-img" alt="">
+                                            <br><br>
+                                            <h5 class="card-title">{{ item.title }}</h5>
+                                            <p class="card-text">{{ item.short_description|safe|truncatechars:300}}</p>
+                                            <a href="{{ item.get_absolute_url }}" class="btn btn-primary">مطالعه درس</a>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            {% endfor %}
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Pagination -->
+        {% if page_obj.has_other_pages %}
+            <nav aria-label="Page navigation example" id="Pagination">
+               <ul class="pagination justify-content-center">
+                   {% if page_obj.has_previous %}
+                   <li class="page-item">
+
+                        <a class="page-link" href="?page={{ page_obj.previous_page_number }}" tabindex="-1">قبلی</a>
+                   </li>
+                   {% else %}
+                   <li class="page-item disabled">
+
+                        <a class="page-link" href="" tabindex="-1">قبلی</a>
+                   </li>
+
+                   {% endif %}
+
+
+               {% for p in page_obj.paginator.page_range %}
+                   {% if page_obj.number == p %}
+
+                   <li class="page-item active">
+                       <a class="page-link" href="#">{{ p }}</a>
+                   </li>
+                   {% else %}
+                       <li class="page-item">
+                       <a class="page-link" href="?page={{ p }}">{{ p }}</a>
+                   </li>
+
+                   {% endif %}
+
+               {% endfor %}
+
+
+               {% if page_obj.has_next %}
+                   <li class="page-item">
+                       <a class="page-link" href="?page={{ page_obj.next_page_number }}">بعدی</a>
+                   </li>
+                   {% else %}
+                   <li class="page-item disabled">
+                       <a class="page-link" href="">بعدی</a>
+                   </li>
+               {% endif %}
+
+               </ul>
+            </nav>
+        {% endif %}
+
+
+
+            <!-- Footer -->
+            {% render_partial 'python_course.views.site_footer_component' %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block footer_reference %}{% include 'python_course/footer_references.html' %}{% endblock %}

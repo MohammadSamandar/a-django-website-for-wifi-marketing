@@ -3,7 +3,7 @@ from .models import Business
 # Register your models here.
 class Business_Admin(admin.ModelAdmin):
 
-    list_display = ('name', 'business_owner', 'phone_number',)
+    # list_display = ('name', 'business_owner', 'phone_number',)
     search_fields = ('name', 'business_owner', 'phone_number')
 
 

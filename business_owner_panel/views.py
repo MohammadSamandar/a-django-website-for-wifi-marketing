@@ -7,11 +7,7 @@ from django.contrib import messages
 
 from django.views import View
 from django.views.generic import TemplateView
-
 from tablib import Dataset
-import pandas as pd
-import os
-from django.core.files.storage import FileSystemStorage
 
 from django.http import HttpResponse
 from .resources import CustomerResource
@@ -41,7 +37,7 @@ class EditUserProfile(View):
             'form': user_profile_form,
             'current_user': current_user
         }
-        return  render(request, 'business_owner_panel/edit_profile.html', context)
+        return  render(request, 'business_owner_panel/a/edit_profile.html', context)
 
 
     def post(self, request: HttpRequest):
@@ -58,7 +54,7 @@ class EditUserProfile(View):
             'current_user': current_user
         }
 
-        return render(request, 'business_owner_panel/edit_profile.html', context)
+        return render(request, 'business_owner_panel/a/edit_profile.html', context)
 
 
 @method_decorator(login_required, name='dispatch')
@@ -67,7 +63,7 @@ class ChangeUserPassword(View):
         context = {
             'form': ChangePasswordForm()
         }
-        return render(request, 'business_owner_panel/change_password.html', context)
+        return render(request, 'business_owner_panel/a/change_password.html', context)
 
     def post(self, request: HttpRequest):
 
@@ -86,7 +82,7 @@ class ChangeUserPassword(View):
         context = {
                 'form': form
             }
-        return render(request, 'business_owner_panel/change_password.html', context)
+        return render(request, 'business_owner_panel/a/change_password.html', context)
 
 
 
@@ -94,7 +90,8 @@ class ChangeUserPassword(View):
 @login_required
 def CustomersPageView(request):
     # customers = BusinessCustomer.objects.all()
-    b = Business.objects.get(business_owner_id=request.user.id)
+    # b = Business.objects.get(business_owner_id=request.user.id)
+    b = BusinessOwner.objects.get(id=request.user.id)
     customers = BusinessCustomer.objects.filter(business=b)
 
     form = CustomerForm()
@@ -126,7 +123,7 @@ def CustomersPageView(request):
         "customers": customers,
         'form': form,
     }
-    return render(request, 'business_owner_panel/customers_list.html', context)
+    return render(request, 'business_owner_panel/a/customers_list.html', context)
 
 
 
@@ -156,7 +153,7 @@ def UpdateCustomerPageView(request, customer_id):
         "form": form,
         'current_user': current_user
     }
-    return render(request, 'business_owner_panel/update-customer.html', context)
+    return render(request, 'business_owner_panel/a/update-customer.html', context)
 
 
 # View created for Delete Customer page
@@ -175,7 +172,7 @@ def DeleteCustomerPageView(request, customer_id):
 
 @login_required
 def customers_records(request):
-    return render(request, 'business_owner_panel/customers_records.html')
+    return render(request, 'business_owner_panel/a/customers_records.html')
 
 @login_required
 def customers_export(request):
@@ -195,7 +192,7 @@ def customers_import(request):
         new_persons = request.FILES['importData']
         if not new_persons.name.endswith('xlsx'):
             messages.info(request, 'فرمت فایل اشتباهه! حواست کجاست')
-            return render(request, 'business_owner_panel/customers_import.html')
+            return render(request, 'business_owner_panel/a/customers_import.html')
 
         imported_data = dataset.load(new_persons.read(), format='xlsx')
         for data in imported_data:
@@ -215,13 +212,13 @@ def customers_import(request):
                 value.save()
             messages.success(request, "مشتریان با موفقیت اضافه شدند!")
 
-    return render(request, 'business_owner_panel/customers_import.html')
+    return render(request, 'business_owner_panel/a/customers_import.html')
 
 
 
 @login_required
 def payments(reqest):
-    return render(reqest, 'business_owner_panel/payments.html')
+    return render(reqest, 'business_owner_panel/a/payments.html')
 
 @login_required
 def sms(reqest):

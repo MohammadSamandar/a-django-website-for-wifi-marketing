@@ -24,14 +24,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY =env('SECRET_KEY')
+SECRET_KEY ='django-insecure-(2um#w4&ga+8u=(7)$d3e&l-#s#da%!4s8x^57a@k-dhw(m-ds'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'shandizgalleria-smartasha.fandogh.cloud',
-    'www.shandizgalleria-smartasha.fandogh.cloud',
+
     'shandizgalleria.smartasha.ir',
     'www.shandizgalleria.smartasha.ir',
     '127.0.0.1',
@@ -99,16 +98,29 @@ WSGI_APPLICATION = 'shandizgalleria.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
-
+#
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 #         'NAME': env('DATABASE_NAME'),
 #         'USER': env('DATABASE_USER'),
 #         'PASSWORD': env('DATABASE_PASS'),
 #         'HOST': env('DATABASE_HOST'),
 #         'PORT': env('DATABASE_PORT'),
+#     }
+# }
+
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'smartash_shandizgalleria',
+#         'USER': 'smartash_shandizgalleria_user',
+#         'PASSWORD': 'Ai](FO9_~Q8r',
+#         'OPTIONS': {
+#             'autocommit': True,
+#             'charset': 'utf8mb4'
+#         }
 #     }
 # }
 
@@ -203,18 +215,10 @@ EMAIL_PORT = 587
 SITE_ID = 1
 
 
-
-
-
-
 IMPORT_EXPORT_USE_TRANSACTIONS = True
-
-
-
-
 CSRF_TRUSTED_ORIGINS = [
 
-    'https://shandizgalleria-smartasha.fandogh.cloud',
-    'https://shandizgalleria-smartasha.fandogh.cloud',
+    'https://shandizgalleria.smartasha.ir',
+    'https://shandizgalleria.smartasha.ir',
 ]
 

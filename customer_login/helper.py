@@ -12,7 +12,7 @@ import time
 def send_otp(mobile, otp):
     mobile = [mobile, ]
     try:
-        api = KavenegarAPI('685731774C596932364B416F782B7450324B6D2B6D3746456B575A474B71696B7175395A7A72745A4733303D')
+        api = KavenegarAPI(Kavenegar_API)
         params = {
             'receptor': mobile,
             'template': 'sendsms',
@@ -21,7 +21,7 @@ def send_otp(mobile, otp):
         }
         response = api.verify_lookup(params)
 
-        print(response)
+        # print(response)
 
     except APIException as e:
         print(e)
@@ -72,7 +72,7 @@ def check_otp_expiration(mobile):
         diff_time = now - otp_time
         print('OTP TIME: ', diff_time)
 
-        if diff_time.seconds > 120:
+        if diff_time.seconds > 60:
             return False
         return True
 

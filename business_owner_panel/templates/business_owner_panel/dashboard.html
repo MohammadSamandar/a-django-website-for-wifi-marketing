@@ -1,33 +1,100 @@
-{% extends 'business_owner_panel/dashboard_base.html' %}
+{% extends 'base.html' %}
 {% load static %}
+{% load thumbnail %}
+{#{% load poll_extras %}#}
+{% load render_partial %}
 
-{% block title %}
-    داشبورد
+{% block meta %}
+    <meta name="keywords" content="{{ lesson.meta_tags.keywords }}">
+    <meta name="description" content="{{ lesson.meta_tags.description |striptags }}">
+    <meta name="robots" content="{{ lesson.meta_tags.robots }}">
+    <link rel="canonical" href="{{ lesson.meta_tags.canonical }}" />
+
+
+
 {% endblock %}
+
+{% block title %}{{ lesson.title  }} | آکادمی پایتون {% endblock %}
+
+{% block header_reference %}
+    {% include 'python_course/header_references.html' %}
+
+{% endblock %}
+
+
+
 
 {% block content %}
-    <!--begin::Content container-->
-    <div id="kt_app_content_container" class="app-container container-fluid">
-    <h1>محتوای این بخش در حال تکمیل است..</h1>
+<div class="wrapper">
+        <!-- Sidebar  -->
+        {% render_partial 'python_course.views.site_sidebar_component' %}
 
-    </div>
-    <!--end::Content container-->
+        <!-- Page Content  -->
+        <div id="content">
+
+
+            <!-- header -->
+            {% render_partial 'python_course.views.site_header_component' %}
+
+
+            <!-- main/body content -->
+            <div class="main-content">
+                <div class="row">
+                    <div class="col-lg-9">
+
+                        <h1>{{ lesson.title  }}</h1>
+                            <br>
+                        <div class="featured-image">
+                            <img src="{{ lesson.image.thumbnail.url }}" class="rounded img-fluid" alt="{{ lesson.image.alt_text }}">
+
+                        </div>
+
+                        {{ lesson.short_description|safe }}
+                        <div class="line"></div>
+
+                        {{ lesson.lesson_content|safe }}
+
+                    </div>
+
+{#                    <div class="col-lg-3">#}
+{##}
+{#                            <div class="w3-border w3-padding-64 w3-center">#}
+{#                                <a href="#" >#}
+{#                                <p>تبلیغات</p>#}
+{#                                  {% thumbnail  lesson.image.url "356x361" quality=80 crop='center' as im %}#}
+{#                                    <img src="{{ im.url }}" class="rounded img-fluid" alt="Responsive image">#}
+{#                                  {% endthumbnail %}#}
+{#                                </a>#}
+{##}
+{#                            </div>#}
+{#                        <br><br><br><br>#}
+{#                        <div class="w3-border w3-padding-64 w3-center">#}
+{#                        <a href="#" >#}
+{#                                <p>تبلیغات</p>#}
+{#                            {% thumbnail  lesson.image.url "356x361" quality=80 crop='center' as im %}#}
+{#                                    <img src="{{ im.url }}" class="rounded img-fluid" alt="Responsive image">#}
+{#                            {% endthumbnail %}#}
+{#                            </a>#}
+{#                    </div>#}
+{#                    </div>#}
+                </div>
+            </div>
+
+
+
+
+
+
+
+           <!-- Pagination -->
+{#            {% render_partial 'python_course.views.pagination' %}#}
+            <!-- Footer -->
+            {% render_partial 'python_course.views.site_footer_component' %}
+</div>
+</div>
 
 {% endblock %}
 
-
-{% block jsfiles %}
-        <!--begin::Vendors Javascript(used for this page only)-->
-		<script src="{% static 'business_owner_panel/plugins/custom/datatables/datatables.bundle.js' %}"></script>
-		<!--end::Vendors Javascript-->
-
-		<!--begin::سفارشی Javascript(used for this page only)-->
-		<script src="{% static 'business_owner_panel/js/widgets.bundle.js' %}"></script>
-		<script src="{% static 'business_owner_panel/js/custom/widgets.js' %}"></script>
-		<script src="{% static 'business_owner_panel/js/custom/utilities/modals/users-search.js' %}"></script>
-        <script src="{% static 'business_owner_panel/plugins/custom/fullcalendar/fullcalendar.bundle.js' %}"></script>
-
-
-		<!--end::سفارشی Javascript-->
+{% block footer_reference %}
+    {% include 'python_course/footer_references.html' %}
 {% endblock %}
-

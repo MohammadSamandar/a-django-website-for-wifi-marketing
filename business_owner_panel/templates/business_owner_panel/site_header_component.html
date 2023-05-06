@@ -1,0 +1,83 @@
+ <div class="header sticky-top navbar-light bg-light">
+
+
+                <!-- search box -->
+                <div id="search-box" class="justify-content-center">
+
+                    <div class="row">
+
+                       <div class="col-sm-12 col-md-11 col-lg-12 col-xl-12">
+                           <form action="{% url 'search_result_for_python_cource' %}" class="d-flex search-form" method="get">
+                               <div class="input-group mb-3">
+
+                                    <input name="search_input" type="text" class="form-control input-text" placeholder="جستجو بین درس ها..." aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-warning btn-lg" type="button"><i class="fa fa-search"></i></button>
+                                    </div>
+
+                                </div>
+                           </form>
+
+                       </div>
+
+                    </div>
+                </div>
+
+
+                <!-- menus -->
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+
+                    <div class="container-fluid">
+
+
+                        <button type="button" id="sidebarCollapse" class="btn btn-blue">
+                            <i class="fas fa-align-right"></i>
+                            <span></span>
+                        </button>
+
+
+                        <button class="btn btn-blue d-inline-block d-lg-none" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <i class="fas fa-align-justify"></i>
+                        </button>
+
+
+
+
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="nav navbar-nav ml-auto" id="main-nav">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'main-page' %}">صفحه اصلی</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'articles-view' %}">وبلاگ</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'contact_us_page' %}">تماس با ما</a>
+                                </li>
+
+                                    {% if request.user.is_authenticated %}
+                                        <li class="nav-item">
+                                        <a class="nav-link" href="{% url 'user_panel_view' %}">پنل کاربری</a>
+                                        </li>
+                                        <li class="nav-item">
+                                        <a class="nav-link" href="{% url 'logout_view' %}">خروج</a>
+                                        </li>
+
+                                    {% else %}
+                                        <li class="nav-item">
+                                        <a class="nav-link" href="{% url 'login_view' %}">ورود</a>
+                                        </li>
+                                        <li class="nav-item">
+                                        <a class="nav-link" href="{% url 'register_view' %}">ثبت نام</a>
+                                        </li>
+
+                                    {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+
+
+</div>

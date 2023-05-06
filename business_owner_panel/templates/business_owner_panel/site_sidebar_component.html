@@ -1,0 +1,66 @@
+<nav id="sidebar">
+            <div class="sidebar-header">
+                <a href="{% url 'main-page' %}">
+{#                    <img class="logo" src="{{ site_setting.logo.url }}" alt="">#}
+                    <h3>Academy Python</h3>
+                </a>
+{#                <a href="{% url 'main-page' %}" class="logo"><strong>AP</strong></a>#}
+            </div>
+
+            <ul class="components">
+{#                <li>#}
+{#                    <a href="{% url 'python-lessons' %}" >#}
+{#                        <i class="fas fa-home"></i>#}
+{##}
+{#                        خانه#}
+{#                    </a>#}
+{##}
+{#                </li>#}
+
+
+{#                {% for lesson in lesson_title %}#}
+{#                    <li class="{% if request.get_full_path == lesson.get_absolute_url %}active{% endif %}">#}
+{##}
+{#                        <a href="{{ lesson.get_absolute_url }}">#}
+{#                            {{ lesson.title | truncatechars:39 }}#}
+{#                        </a>#}
+{##}
+{#                    </li>#}
+{#                {% endfor %}#}
+
+
+
+                <li class="active">
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle collapsed">درس ها</a>
+
+                    <ul class="list-unstyled collapse" id="homeSubmenu" style="">
+                        <li>
+                            <a href="{% url 'manage_lesson_list' %}">لیست درس ها</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'lesson_create' %}">دسته بندی ها</a>
+                        </li>
+
+                        <li>
+                            <a href="{% url 'lesson_create' %}">تصاویر</a>
+                        </li>
+
+                        <li>
+                            <a href="{% url 'lesson_create' %}">متا تگ ها</a>
+                        </li>
+
+
+                    </ul>
+                </li>
+            </ul>
+
+
+
+
+
+
+
+
+</nav>
+
+

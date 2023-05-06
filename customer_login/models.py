@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from Businesses.models import Business
+from login_signup.models import BusinessOwner
 from customer_login.myusermanager import MyUserManager
 from users.models import SiteUser
 
@@ -10,7 +11,7 @@ from users.models import SiteUser
 class BusinessCustomer(SiteUser):
     otp = models.PositiveIntegerField(blank=True, null=True)
     otp_create_time = models.DateTimeField(auto_now=True)
-    business = models.ForeignKey(Business, related_name='customer', on_delete=models.CASCADE, null=True, blank=True)
+    business = models.ForeignKey(BusinessOwner, related_name='customer', on_delete=models.CASCADE, null=True, blank=True)
 
 
     objects = MyUserManager()

@@ -11,7 +11,7 @@ class Business(models.Model):
     name = models.CharField(max_length=100, unique=True)
 
 
-    business_owner = models.ForeignKey(BusinessOwner, on_delete=models.CASCADE, related_name='my_business', null=True)
+    # business_owner = models.ForeignKey(BusinessOwner, on_delete=models.CASCADE, related_name='my_business', null=True)
     phone_number = models.CharField(max_length=11, null=True, blank=True, unique=True)
     address = models.TextField(null=True)
     # router_id = models.IntegerField(unique=True)

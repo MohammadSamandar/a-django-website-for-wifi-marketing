@@ -4,7 +4,7 @@ from .models import BusinessCustomer
 from .forms import RegisterForm
 from . import helper
 from django.contrib import messages
-from Businesses.models import Business
+from login_signup.models import BusinessOwner
 
 
 
@@ -14,10 +14,10 @@ def register_view(request):
         try:
             if "mobile" in request.POST:
                 mobile = request.POST.get('mobile')
-                user = BusinessCustomer.objects.filter(mobile__iexact=mobile).exists()
+                user = BusinessCustomer.objects.filter(mobile__iexact=mobile, username__iexact=mobile).exists()
 
                 if user:
-                    user = BusinessCustomer.objects.filter(mobile__iexact=mobile, is_active=True).exists()
+                    user = BusinessCustomer.objects.filter(mobile__iexact=mobile,username__iexact=mobile, is_active=True).exists()
                     if user:
                         return redirect("http://shandiz.smartasha.ir/blogin.html")
                     else:
@@ -25,10 +25,7 @@ def register_view(request):
                         helper.send_otp(mobile, otp)
                         print(otp)
 
-                        # user = BusinessCustomer(mobile=mobile, username=mobile, is_business_customer=True, otp=otp,
-                        #                         is_active=False)
-                        # shandiz = Business.objects.filter(name__iexact='شاندیز گالریا')
-                        # user.business.set(shandiz)
+
 
                         request.session['user_mobile'] = mobile
                         request.session['otp'] = otp
@@ -40,16 +37,7 @@ def register_view(request):
                     helper.send_otp(mobile, otp)
                     print(otp)
 
-                    # user = BusinessCustomer(mobile=mobile, username=mobile, is_business_customer=True, otp=otp,
-                    #                         is_active=False)
 
-                    # user.save()
-
-                    # b = Business.objects.get(business_owner_id=request.user.id)
-                    # customers = BusinessCustomer.objects.filter(business=b)
-
-                    # shandiz = Business.objects.filter(name__iexact='شاندیز گالریا')
-                    # user.business.set(shandiz)
                     request.session['user_mobile'] = mobile
                     request.session['otp'] = otp
                     # return HttpResponseRedirect(reverse('verify')) # this code not wotk in production
@@ -62,6 +50,7 @@ def register_view(request):
                 # send otp
                 otp = helper.get_random_otp()
                 # helper.send_otp(mobile, otp)
+                mobile = request.POST.get('mobile')
                 helper.send_otp(mobile, otp)
                 # save otp
                 print(otp)
@@ -92,14 +81,15 @@ def verify(request):
                 #     messages.error(request, "زمان وارد کردن کد تایید به اتمام رسید، دوباره امتحان کنید.")
                 #     return redirect('register_page_customer')
 
-                # if user.otp != int(request.POST.get('otp')):
-                #     messages.error(request, "کد تایید اشتباه است!")
-                #     return redirect('verify')
+                if user.otp != int(request.POST.get('otp')):
+                    messages.error(request, "کد تایید اشتباه است!")
+                    return redirect('verify')
 
                 user.is_active = True
 
-                shandiz = Business.objects.get(name__iexact='شاندیز گالریا')
-                user.business = shandiz
+                # shandiz = Business.objects.get()
+                b = BusinessOwner.objects.get(is_business_owner=True, is_active=True)
+                user.business = b
                 user.save()
 
 
@@ -121,8 +111,8 @@ def verify(request):
 
             user.is_active = True
             # user.save()
-            shandiz = Business.objects.filter(name__iexact='شاندیز گالریا')
-            user.business = shandiz
+            b = BusinessOwner.objects.get(is_business_owner=True, is_active=True)
+            user.business = b
             user.save()
             # login(request, user)
             # return HttpResponseRedirect(reverse('alogin'))
