@@ -26,19 +26,34 @@
 
         <tbody>
 
+        {% for customer in customers %}
+
+
 
             <tr>
-                <td>Donna Snider</td>
+                <td>{{ customer.mobile }}</td>
+
                 <td>
-                    تایید شده
+                    {% if customer.is_active %}
+                        تایید شده
+                        {% else %}
+                        تایید نشده
+                    {% endif %}
+
                 </td>
 
-                <td>2011-01-25</td>
+                <td>{{ customer.date_joined }}</td>
                 <td>
-                    <button class="btn btn-danger"><a href="">حذف</a></button>
-                    <button class="btn btn-secondary"><a href="">ویرایش</a></button>
+                    <button class="btn btn-danger">
+                        <a href="{% url "delete_customer" customer_id=customer.id %}">حذف</a>
+                    </button>
+                    <button class="btn btn-secondary">
+                        <a href="{% url "update_customer" customer_id=customer.id %}">ویرایش</a>
+                    </button>
                 </td>
             </tr>
+
+        {% endfor %}
         </tbody>
 
 
@@ -54,7 +69,6 @@
         </tfoot>
     </table>
 
-<p>hlkuh</p>
 
 
 
