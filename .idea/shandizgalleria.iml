@@ -24,6 +24,13 @@
     <orderEntry type="library" name="93f8a3b252" level="application" />
     <orderEntry type="library" name="solid" level="application" />
     <orderEntry type="library" name="fontawesome" level="application" />
+    <orderEntry type="library" name="dataTables.bootstrap4" level="application" />
+    <orderEntry type="library" name="jquery.dataTables" level="application" />
+    <orderEntry type="library" name="fixedColumns.bootstrap4" level="application" />
+    <orderEntry type="library" name="fixedColumns.bootstrap" level="application" />
+    <orderEntry type="library" name="twitter-bootstrap" level="application" />
+    <orderEntry type="library" name="jquery-3.5.1" level="application" />
+    <orderEntry type="library" name="datatables" level="application" />
   </component>
   <component name="TemplatesService">
     <option name="TEMPLATE_CONFIGURATION" value="Django" />
