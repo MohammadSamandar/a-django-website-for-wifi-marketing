@@ -11,8 +11,14 @@
 
 {% block content %}
 
+    <h3>لیست مشتریان</h3>
+<button class="btn btn-info"><a href="{% url "customers_export" %}">خروجی گرفتن در فایل اکسل</a></button>
+    <br><br><br>
+
 
 <table id="example" class="table table-striped table-bordered" style="width:100%">
+
+
         <thead>
             <tr>
                 <th>موبایل</th>
@@ -22,7 +28,6 @@
                 <th>عملیات</th>
             </tr>
         </thead>
-
 
         <tbody>
 

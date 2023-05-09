@@ -1,17 +1,23 @@
-{% extends 'business_owner_panel/dashboard_base.html' %}
+{% extends 'business_owner_panel/base.html' %}
 
 {% block content %}
-<h3>Export Data</h3>
-<p>exporting from database</p>
+<h3>خروجی گرفتن از لیست مشتریان</h3>
+<p>دریافت اطلاعات از دیتابیس</p>
+
+
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    <p>Please select format of file.</p>
+
+    <p>فرمت مد نظر را انتخاب کنید</p>
+
     <select name="file-format" class="form-control my-3">
-        <option selected>Choose format...</option>
+        <option selected>انتخاب فرمت...</option>
         <option>CSV</option>
         <option>JSON</option>
         <option>XLS (Excel)</option>
       </select>
-    <button class="btn btn-primary" type="submit">Export</button>
+    <button class="btn btn-primary" type="submit">خروجی</button>
   </form>
+
+
   {% endblock %}
