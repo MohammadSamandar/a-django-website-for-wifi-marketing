@@ -1,4 +1,4 @@
-{% extends 'business_owner_panel/dashboard_base.html' %}
+{% extends 'business_owner_panel/base.html' %}
 {% load static %}
 
 {% block title %}
@@ -20,16 +20,30 @@
 
 
     <form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-
-    <input type="file" name="importData">
-
-    <p>Please select format of file.</p>
+        {% csrf_token %}
+        <h3>فایل اکسلی که حاوی لیست شماره های مشتریان است را وارد کنید</h3>
+        <br>
 
 
-    <button class="btn btn-primary" type="submit">Import</button>
+        <div class="input-group mb-3">
 
-  </form>
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                <label class="custom-file-label" for="inputGroupFile01">انتخاب فایل</label>
+            </div>
+        </div>
+
+
+        <p>
+            فرمت فایل می بایست xlsx باشد
+            <br>
+            شماره تکراری نباید وجود داشته باشد
+        </p>
+
+
+        <button class="btn btn-primary" type="submit">وارد کردن</button>
+
+    </form>
 
     </div>
     <!--end::Content container-->
@@ -37,7 +51,9 @@
 {% endblock %}
 
 
-{% block jsfiles %}
+{% block footer_reference %}
+    {% include 'business_owner_panel/components_references/footer_references.html' %}
+
 
 {% endblock %}
 

@@ -180,7 +180,7 @@ def customers_export(request):
 
     dataset = person_resource.export()
     response = HttpResponse(dataset.xls, content_type='application/vnd.ms-excel')
-    response['Content-Disposition'] = 'attachment; filename="persons.xls"'
+    response['Content-Disposition'] = 'attachment; filename="persons.xlsx"'
     return response
 
 @login_required
@@ -199,14 +199,14 @@ def customers_import(request):
 
             try:
                 user_exist_or_not = BusinessCustomer.objects.get(username=data[0])
-                messages.error(request, "user already exists")
+                messages.error(request, "کاربری با این شماره وجود دارد")
                 # return redirect("some_error_page")
 
 
 
             except BusinessCustomer.DoesNotExist:
 
-                b = Business.objects.get(business_owner_id=request.user.id)
+                b = BusinessOwner.objects.get(id=request.user.id)
                 value = BusinessCustomer(mobile=data[0], username=data[0], is_business_customer=True, business=b)
                 # value.business = b
                 value.save()
