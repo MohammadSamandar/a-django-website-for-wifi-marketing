@@ -1,10 +1,17 @@
-{% extends get_master_template %}
+{% extends 'surveys/master.html' %}
 {% load djf_survey_tags i18n static %}
 
 {% block extra_css %}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css"/>
     <link rel="stylesheet" href="{% static 'surveys/css/rating.css' %}"/>
 {% endblock %}
+
+    {% block header_nav %}
+        {% if request.user.is_authenticated %}
+            {% include 'surveys/components/header_nav.html' %}
+            {% else %}
+        {% endif %}
+    {% endblock %}
 
 {% block content %}
     <div class="max-w-screen-xl px-4 py-16 mx-auto sm:px-6 lg:px-8">

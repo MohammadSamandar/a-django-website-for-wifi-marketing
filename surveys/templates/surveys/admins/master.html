@@ -15,7 +15,9 @@
             {% include 'surveys/components/alert.html' %}
         {% endfor %}
     {% endif %}
-    {% include 'surveys/components/header_nav.html' %}
+
+    {% block header_nav %}{% include 'surveys/components/header_nav.html' %}{% endblock %}
+
     <div class="container mx-auto">
         {% block content %} {% endblock %}
     </div>

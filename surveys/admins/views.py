@@ -57,7 +57,7 @@ class SurveyListView(ContextTitleMixin, ListView):
 @method_decorator(login_required, name='dispatch')
 class DetailSurveyView(ContextTitleMixin, DetailView):
     model = Survey
-    template_name = "surveys/answer_list.html"
+    template_name = "surveys/admins/answer_list.html"
     title_page = "Survey Detail"
     paginate_by = app_settings.SURVEY_PAGINATION_NUMBER['answer_list']
 

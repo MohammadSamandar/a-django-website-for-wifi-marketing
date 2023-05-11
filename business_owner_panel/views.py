@@ -210,7 +210,7 @@ def customers_import(request):
                 value = BusinessCustomer(mobile=data[0], username=data[0], is_business_customer=True, business=b)
                 # value.business = b
                 value.save()
-            messages.success(request, "مشتریان با موفقیت اضافه شدند!")
+        messages.success(request, "مشتریان با موفقیت اضافه شدند!")
 
     return render(request, 'business_owner_panel/customers_import.html')
 

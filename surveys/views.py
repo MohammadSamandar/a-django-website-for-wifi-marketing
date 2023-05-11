@@ -1,3 +1,4 @@
+from celery.worker.state import requests
 from django.urls import reverse_lazy, reverse
 from django.utils.text import capfirst
 from django.utils.translation import gettext, gettext_lazy as _
@@ -21,7 +22,15 @@ from surveys.utils import NewPaginator
 
 class SurveyFormView(FormMixin, DetailView):
     template_name = 'surveys/form.html'
-    success_url = reverse_lazy("surveys:detail_result")
+    # success_url = reverse_lazy("surveys:detail_result")
+
+    def get_success_url(self):
+        survey = Survey()
+        answer = UserAnswer.objects.filter(survey=survey, user=self.request.user.id).first()
+
+        # return reverse_lazy("surveys:detail_result", pk=answer.id)
+        return reverse_lazy("surveys:DetailSurveyView", kwargs={'pk': answer.id})
+
 
     def post(self, request, *args, **kwargs):
         form = self.get_form()
@@ -38,8 +47,8 @@ class SurveyFormView(FormMixin, DetailView):
 class CreateSurveyFormView(ContextTitleMixin, SurveyFormView):
 
     def get_success_url(self):
-        survey = self.get_object()
-        answer = UserAnswer.objects.filter(survey=survey, user=self.request.user.id).first()
+        # survey = self.get_object()
+        answer = UserAnswer.objects.filter( user=self.request.user.id).first()
 
         # return reverse_lazy("surveys:detail_result", pk=answer.id)
         return reverse_lazy("surveys:detail_result", kwargs={'pk': answer.id})
@@ -85,13 +94,13 @@ class EditSurveyFormView(ContextTitleMixin, SurveyFormView):
         context['object'] = self.get_object().survey
         return context
 
-    def dispatch(self, request, *args, **kwargs):
-        # handle if user not same
-        user_answer = self.get_object()
-        if user_answer.user != request.user or not user_answer.survey.editable:
-            messages.warning(request, gettext("شما مجوز لازم برای ویرایش این نظرسنجی را ندارید"))
-            return redirect("surveys:index")
-        return super().dispatch(request, *args, **kwargs)
+    # def dispatch(self, request, *args, **kwargs):
+    #     # handle if user not same
+    #     user_answer = self.get_object()
+    #     if user_answer.user != request.user or not user_answer.survey.editable:
+    #         messages.warning(request, gettext("شما مجوز لازم برای ویرایش این نظرسنجی را ندارید"))
+    #         return redirect("surveys:index")
+    #     return super().dispatch(request, *args, **kwargs)
 
     def get_form(self, form_class=None):
         if form_class is None:
