@@ -161,7 +161,7 @@ def UpdateCustomerPageView(request, customer_id):
 def DeleteCustomerPageView(request, customer_id):
     customer = BusinessCustomer.objects.get(id=customer_id)
     customer.delete()
-    messages.error(request, "مشتری با موفقیت حذف شد! بر روح پاکش صلوات")
+    # messages.error(request, "مشتری با موفقیت حذف شد! بر روح پاکش صلوات")
     return redirect('customers_list')
 
 

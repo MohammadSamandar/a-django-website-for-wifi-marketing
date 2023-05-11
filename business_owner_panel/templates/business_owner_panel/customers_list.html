@@ -10,6 +10,17 @@
 {% endblock %}
 
 {% block content %}
+    {% for message in messages %}
+
+        {% if message.tags == "success" %}
+            <div class="alert alert-success alert-dismissible fade show">
+                {{message}}
+            </div>
+        {% elif message.tags == "error" %}
+        {% endif %}
+    {% endfor %}
+
+
 
     <h3>لیست مشتریان</h3>
 <button class="btn btn-info"><a href="{% url "customers_export" %}">خروجی گرفتن در فایل اکسل</a></button>

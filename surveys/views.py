@@ -123,14 +123,15 @@ class DeleteSurveyAnswerView(DetailView):
         user_answer = self.get_object()
         if user_answer.user != request.user or not user_answer.survey.deletable:
             messages.warning(request, gettext("شما مجوز لازم برای حذف جواب این نظرسنجی را ندارید"))
-            return redirect("surveys:index")
+            return redirect("surveys:DetailSurveyView" ,slug=user_answer.survey.slug)
+
         return super().dispatch(request, *args, **kwargs)
 
     def get(self, request, *args, **kwargs):
         user_answer = self.get_object()
         user_answer.delete()
         messages.success(self.request, gettext("جواب با موفقیت حذف شد."))
-        return redirect("surveys:detail", slug=user_answer.survey.slug)
+        return redirect("surveys:DetailSurveyView" ,slug=user_answer.survey.slug)
 
 
 

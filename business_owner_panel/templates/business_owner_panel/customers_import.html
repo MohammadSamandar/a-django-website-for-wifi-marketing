@@ -7,7 +7,6 @@
 
 {% block content %}
     <!--begin::Content container-->
-    <div id="kt_app_content_container" class="app-container container-fluid">
     {% for message in messages %}
 
         {% if message.tags == "success" %}
@@ -45,7 +44,6 @@
 
     </form>
 
-    </div>
     <!--end::Content container-->
 
 {% endblock %}

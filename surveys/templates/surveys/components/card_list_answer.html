@@ -4,7 +4,35 @@
 
     <blockquote class="p-6 border border-gray-100 rounded-lg shadow-lg bg-white">
 
+        {% if object.user == request.user %}
+            <div class="flex -space-x-4 hover:space-x-1 float-right">
+                {% if object.survey.editable %}
+                    <a href="{% url 'surveys:edit' object.id %}" class="z-20 block p-4 text-blue-700 transition-all bg-blue-100 border-2 border-white rounded-full active:bg-blue-50 hover:scale-110 focus:outline-none focus:ring"
+                            type="button">
+                        {% include "surveys/buttons/edit_button.html" %}
+                    </a>
+                {% endif %}
+                {% if not on_detail %}
+                    <a href="{% url 'surveys:detail_result' object.id %}" class="z-20 block p-4 text-green-700 transition-all bg-green-100 border-2 border-white rounded-full active:bg-green-50 hover:scale-110 focus:outline-none focus:ring"
+                            type="button">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                              </svg>
+                    </a>
+                {% endif %}
 
+                {% if object.survey.deletable %}
+                    <a href="{% url 'surveys:delete' object.id %}" class="button-delete z-30 block p-4 text-red-700 transition-all bg-red-100 border-2 border-white rounded-full hover:scale-110 focus:outline-none focus:ring active:bg-red-50"
+                        data-bs-toggle="modal"
+                        data-bs-target="#modalDelete"
+                        data-mdb-object_name="your answer"
+                        data-mdb-object_delete_url="{% url 'surveys:delete' object.id %}">
+                        {% include "surveys/buttons/delete_button.html" %}
+                    </a>
+                {% endif %}
+            </div>
+        {% endif %}
 
         <cite class="flex items-center mb-8 not-italic">
 
@@ -26,35 +54,7 @@
 
 
         <hr class="mt-3 mb-3">
-        {% if object.user == request.user %}
-            <div class="flex -space-x-4 hover:space-x-1 float-right">
-                {% if object.survey.editable %}
-                    <a href="{% url 'surveys:edit' object.id %}" class="z-20 block p-4 text-blue-700 transition-all bg-blue-100 border-2 border-white rounded-full active:bg-blue-50 hover:scale-110 focus:outline-none focus:ring"
-                            type="button">
-                        {% include "surveys/buttons/edit_button.html" %}
-                    </a>
-                {% endif %}
-                {% if not on_detail %}
-                    <a href="{% url 'surveys:detail_result' object.id %}" class="z-20 block p-4 text-green-700 transition-all bg-green-100 border-2 border-white rounded-full active:bg-green-50 hover:scale-110 focus:outline-none focus:ring"
-                            type="button">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                              </svg>
-                    </a>
-                {% endif %}
 
-                {% if object.survey.deletable %}
-                    <a class="button-delete z-30 block p-4 text-red-700 transition-all bg-red-100 border-2 border-white rounded-full hover:scale-110 focus:outline-none focus:ring active:bg-red-50"
-                        data-bs-toggle="modal"
-                        data-bs-target="#modalDelete"
-                        data-mdb-object_name="your answer"
-                        data-mdb-object_delete_url="{% url 'surveys:delete' object.id %}">
-                        {% include "surveys/buttons/delete_button.html" %}
-                    </a>
-                {% endif %}
-            </div>
-        {% endif %}
 
         {% for answer in object.answer_set.all %}
             <p class="text-lg text-neutral-900">{{ answer.question.label }}</p>
