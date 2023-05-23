@@ -20,6 +20,7 @@ urlpatterns = [
 
 
     path('payments/', views.payments, name = 'payments'),
+    path('subscription-plan/', views.subscription_plan, name = 'subscription_plan'),
     path('sms/', views.sms, name = 'sms'),
 
 ]

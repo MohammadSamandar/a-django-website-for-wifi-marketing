@@ -13,7 +13,7 @@ from slugify import slugify
 class SubscriptionPlan(models.Model):
     title = models.CharField(max_length=300)
     duration = models.PositiveIntegerField(help_text='مدت زمان اعتبار')
-    price = models.DecimalField(max_digits=8, decimal_places=2, verbose_name='قیمت')
+    price = models.DecimalField(max_digits=20, decimal_places=0, verbose_name='قیمت')
     short_description = models.CharField(verbose_name='توضحیات کوتاه', max_length=300, null=True, blank=True)
     description = models.TextField(verbose_name=' توضیحات اصلی', null=True, blank=True)
     is_active = models.BooleanField(default=False, verbose_name='فعال / غیر فعال')

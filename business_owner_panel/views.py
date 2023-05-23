@@ -4,21 +4,22 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from django.views.generic import ListView
 from django.contrib import messages
-
 from django.views import View
 from django.views.generic import TemplateView
 from tablib import Dataset
-
 from django.http import HttpResponse
 from .resources import CustomerResource
-from Businesses.models import Business
+from django.contrib.auth import logout
+from django.utils.decorators import method_decorator
 # from site_module.models import Site_Setting
 from .forms import UserProfileForm, ChangePasswordForm, CustomerForm
+
 from login_signup.models import BusinessOwner
 from customer_login.models import BusinessCustomer
 from users.models import SiteUser
-from django.contrib.auth import logout
-from django.utils.decorators import method_decorator
+from Businesses.models import Business
+from product_module.models import SubscriptionPlan
+
 
 # Create your views here.
 
@@ -220,9 +221,47 @@ def customers_import(request):
 def payments(request):
     return render(request, 'business_owner_panel/payments.html')
 
+
+@login_required
+def subscription_plan(request):
+
+    plans = SubscriptionPlan.objects.all().order_by('duration')
+
+    context = {
+        'plans': plans,
+    }
+
+
+    return render(request, 'business_owner_panel/subscriptionplan.html', context)
+
+
 @login_required
 def sms(request):
     return render(reqest, 'business_owner_panel/sms.html')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
