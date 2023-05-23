@@ -218,7 +218,7 @@ def customers_import(request):
 
 @login_required
 def payments(request):
-    return render(reqest, 'business_owner_panel/payments.html')
+    return render(request, 'business_owner_panel/payments.html')
 
 @login_required
 def sms(request):

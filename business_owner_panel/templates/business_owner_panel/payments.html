@@ -1,33 +1,38 @@
-{% extends 'business_owner_panel/dashboard_base.html' %}
+{% extends 'business_owner_panel/base.html' %}
 {% load static %}
+{% load thumbnail %}
+{#{% load poll_extras %}#}
+{% load render_partial %}
+
 
 {% block title %}
-    سوابق مالی
+   سوابق مالی و پرداخت
 {% endblock %}
 
 {% block content %}
-    <!--begin::Content container-->
-    <div id="kt_app_content_container" class="app-container container-fluid">
-    <h1>محتوای این بخش در حال تکمیل است..</h1>
+    {% for message in messages %}
 
-    </div>
-    <!--end::Content container-->
+        {% if message.tags == "success" %}
+            <div class="alert alert-success alert-dismissible fade show">
+                {{message}}
+            </div>
+        {% elif message.tags == "error" %}
+        {% endif %}
+    {% endfor %}
+
+
+    <p>صفحه پرداخت</p>
+
 
 {% endblock %}
 
 
-{% block jsfiles %}
-        <!--begin::Vendors Javascript(used for this page only)-->
-		<script src="{% static 'business_owner_panel/plugins/custom/datatables/datatables.bundle.js' %}"></script>
-		<!--end::Vendors Javascript-->
+{% block footer_reference %}
+    {% include 'business_owner_panel/components_references/footer_references.html' %}
 
-		<!--begin::سفارشی Javascript(used for this page only)-->
-		<script src="{% static 'business_owner_panel/js/widgets.bundle.js' %}"></script>
-		<script src="{% static 'business_owner_panel/js/custom/widgets.js' %}"></script>
-		<script src="{% static 'business_owner_panel/js/custom/utilities/modals/users-search.js' %}"></script>
-        <script src="{% static 'business_owner_panel/plugins/custom/fullcalendar/fullcalendar.bundle.js' %}"></script>
-
-
-		<!--end::سفارشی Javascript-->
+<script type="text/javascript">
+        $(document).ready(function () {
+            $('#example').DataTable();
+        });
+</script>
 {% endblock %}
-
