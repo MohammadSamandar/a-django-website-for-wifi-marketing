@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'business_owner_panel',
     'customer_login',
     'surveys',
+    'product_module',
 
 
     'django_render_partial',

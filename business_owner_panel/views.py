@@ -217,11 +217,11 @@ def customers_import(request):
 
 
 @login_required
-def payments(reqest):
+def payments(request):
     return render(reqest, 'business_owner_panel/payments.html')
 
 @login_required
-def sms(reqest):
+def sms(request):
     return render(reqest, 'business_owner_panel/sms.html')
 
 
