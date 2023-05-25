@@ -10,15 +10,6 @@
 {% endblock %}
 
 {% block content %}
-    {% for message in messages %}
-
-        {% if message.tags == "success" %}
-            <div class="alert alert-success alert-dismissible fade show">
-                {{message}}
-            </div>
-        {% elif message.tags == "error" %}
-        {% endif %}
-    {% endfor %}
 
 
     <div class="container mb-5 mt-5">
@@ -31,21 +22,27 @@
 
 
             <div class="card card-pricing text-center px-3 mb-4">
-            <span class="h6 w-60 mx-auto px-4 py-1 rounded-bottom bg-primary text-white shadow-sm"> {{ plan.duration }} ماهه</span>
-            <div class="bg-transparent card-header pt-4 border-0">
-                <h1 class="h1 font-weight-normal text-primary text-center mb-0" data-pricing-value="15"><span class="price">{{ plan.price }}</span> تومان</h1>
-            </div>
-            <div class="card-body pt-0">
-                <ul class="list-unstyled mb-4">
+
+                <span class="h6 w-60 mx-auto px-4 py-1 rounded-bottom bg-primary text-white shadow-sm"> {{ plan.duration }} ماهه</span>
+
+                <div class="bg-transparent card-header pt-4 border-0">
+                    <h1 class="h1 font-weight-normal text-primary text-center mb-0" data-pricing-value="15"><span class="price">{{ plan.price }}</span> تومان</h1>
+                </div>
+
+                <div class="card-body pt-0">
+                    <ul class="list-unstyled mb-4">
 {#                    <li>Up to 5 users</li>#}
 {#                    <li>Basic support on Github</li>#}
 {#                    <li>Monthly updates</li>#}
 {#                    <li>Free cancelation</li>#}
-                    <p>{{ plan.description }}</p>
-                </ul>
-                <button type="button" class="btn btn-outline-secondary mb-3">سفارش دهید</button>
+                        <p>{{ plan.description }}</p>
+                    </ul>
+                    <a href="{% url 'subscription_plan_detail' slug=plan.slug %}">
+                        <button type="button" class="btn btn-outline-secondary mb-3">سفارش دهید</button>
+                    </a>
+                </div>
+
             </div>
-        </div>
 
             {% endfor %}
 

@@ -236,6 +236,19 @@ def subscription_plan(request):
 
 
 @login_required
+def subscription_plan_detial(request, slug):
+
+    plans = get_object_or_404(SubscriptionPlan, slug=slug)
+
+    context = {
+        'plans': plans,
+    }
+
+
+    return render(request, 'business_owner_panel/subscriptionplan_detail.html', context)
+
+
+@login_required
 def sms(request):
     return render(reqest, 'business_owner_panel/sms.html')
 

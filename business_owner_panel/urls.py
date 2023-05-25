@@ -21,6 +21,7 @@ urlpatterns = [
 
     path('payments/', views.payments, name = 'payments'),
     path('subscription-plan/', views.subscription_plan, name = 'subscription_plan'),
+    path('<slug:slug>', views.subscription_plan_detial, name = 'subscription_plan_detail'),
     path('sms/', views.sms, name = 'sms'),
 
 ]

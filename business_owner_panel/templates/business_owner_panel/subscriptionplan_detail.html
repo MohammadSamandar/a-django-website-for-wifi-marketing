@@ -1,0 +1,46 @@
+{% extends 'business_owner_panel/base.html' %}
+{% load static %}
+{% load thumbnail %}
+{#{% load poll_extras %}#}
+{% load render_partial %}
+
+
+{% block title %}
+   پلن های اشتراکی
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>جزئیات پلن اشتراکی</h1>
+
+        <div class="card">
+
+            <div class="card-header">
+                <h5 class="card-title">{{ plans.title }}</h5>
+            </div>
+
+            <div class="card-body">
+                <p class="card-text">{{ plans.description }}</p>
+                <h1 class="h3 text-primary mb-0" data-pricing-value="15"><span class="price">{{ plans.price }}</span> تومان</h1>
+
+                <a href="#" class="btn btn-primary">خرید پلن</a>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+{% endblock %}
+
+
+{% block footer_reference %}
+    {% include 'business_owner_panel/components_references/footer_references.html' %}
+
+<script type="text/javascript">
+        $(document).ready(function () {
+            $('#example').DataTable();
+        });
+</script>
+{% endblock %}
