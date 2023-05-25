@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'customer_login',
     'surveys',
     'product_module',
+    'order_module',
 
 
     'django_render_partial',
