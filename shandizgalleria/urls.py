@@ -21,6 +21,8 @@ urlpatterns = [
     path('', include('login_signup.urls')),
     path('dashboard/', include('business_owner_panel.urls')),
     path('dashboard/surveys/', include('surveys.urls')),
+    path('dashboard/plans/', include('product_module.urls')),
+    path('dashboard/order/', include('order_module.urls')),
     path('business-customer/', include('customer_login.urls')),
 
     path('business/', include('Businesses.urls')),
