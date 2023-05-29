@@ -21,7 +21,6 @@ class OrderDetail(models.Model):
     product = models.ForeignKey(SubscriptionPlan, on_delete=models.CASCADE, verbose_name='محصول')
     order = models.ForeignKey(Order, on_delete=models.CASCADE, verbose_name='سفارش')
     final_price = models.IntegerField(verbose_name='قیمت نهایی تکی محصول', null=True, blank=True)
-    count = models.IntegerField(verbose_name='تعداد')
 
     def __str__(self):
         return str(self.order)

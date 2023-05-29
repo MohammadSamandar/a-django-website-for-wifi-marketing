@@ -4,8 +4,7 @@ from . import views
 
 urlpatterns = [
 
-    path('', views.subscription_plan, name = 'subscription_plan'),
-    path('<slug:slug>', views.subscription_plan_detial, name = 'subscription_plan_detail'),
+    path('add-to-order', views.add_product_to_order, name='add_product_to_order'),
 
 ]
 

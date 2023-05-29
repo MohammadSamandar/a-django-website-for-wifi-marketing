@@ -33,6 +33,7 @@
     <orderEntry type="library" name="datatables" level="application" />
     <orderEntry type="library" name="pdfmake" level="application" />
     <orderEntry type="library" name="jquery" level="application" />
+    <orderEntry type="library" name="sweetalert2" level="application" />
   </component>
   <component name="TemplatesService">
     <option name="TEMPLATE_CONFIGURATION" value="Django" />
