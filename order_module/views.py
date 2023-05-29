@@ -40,3 +40,10 @@ def add_product_to_order(request):
             'message': 'کاربر وارد نشده است.'
         })
 
+@login_required
+def user_basket(request: HttpRequest):
+    current_order, created = Order.objects.prefetch_related('orderdetail_set').get_or_create(is_paid=False, user_id=request.user.id)
+    context = {
+        'order': current_order,
+    }
+    return render(request, 'business_owner_panel/user_basket.html', context)

@@ -488,8 +488,8 @@ input[type='text']{
     z-index: 1;
 }
 #search-box {
-    position: absolute;
-    margin:14px 60px 0px 60px;
+    position: relative;
+    /*margin:14px 60px 0px 60px;*/
     direction: ltr;
     left: 0;
 
@@ -559,3 +559,6 @@ input[type='text']{
     padding: .5rem 0;
     color: #6c757d;
 }
+
+
+
