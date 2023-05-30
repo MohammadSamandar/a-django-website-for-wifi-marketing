@@ -43,8 +43,11 @@ def add_product_to_order(request):
 @login_required
 def user_basket(request: HttpRequest):
     current_order, created = Order.objects.prefetch_related('orderdetail_set').get_or_create(is_paid=False, user_id=request.user.id)
+    total_amount = current_order.calculate_total_price()
+
     context = {
         'order': current_order,
+        'sum': total_amount
     }
     return render(request, 'business_owner_panel/user_basket.html', context)
 
@@ -57,18 +60,20 @@ def remove_order_detail(request: HttpRequest):
         })
 
 
-    current_order, created = Order.objects.prefetch_related('orderdetail_set').get_or_create(is_paid=False, user_id=request.user.id)
-    detail = current_order.orderdetail_set.filter(id=detail_id).first()
+    # current_order, created = Order.objects.prefetch_related('orderdetail_set').get_or_create(is_paid=False, user_id=request.user.id)
+    # detail = current_order.orderdetail_set.filter(id=detail_id).first()
 
-    if detail is None:
+    deleted_count, deleted_dict = OrderDetail.objects.filter(id=detail_id, order__is_paid=False, order__user_id=request.user.id).delete()
+
+    if deleted_count is None:
         return JsonResponse({
             'status': 'detail_not_found'
         })
 
-    detail.delete()
+    # detail.delete()
 
     current_order, created = Order.objects.prefetch_related('orderdetail_set').get_or_create(is_paid=False, user_id=request.user.id)
-
+    total_amount = current_order.calculate_total_price()
     context = {
         'order': current_order,
     }
