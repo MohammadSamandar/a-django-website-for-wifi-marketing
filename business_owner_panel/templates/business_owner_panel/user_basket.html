@@ -15,9 +15,9 @@
         <h1>پلن موجود در سبد خرید</h1>
 
         <br><br>
-        {% if order.orderdetail_set.all %}
-            <div id="order-detail-content">
 
+        <div id="order-detail-content">
+            {% if order.orderdetail_set.all %}
 
             <table class="table">
                 <thead>
@@ -49,10 +49,6 @@
             <button class="btn btn-primary">به روز رسانی سبد خرید</button>
             <button class="btn btn-success">پرداخت</button>
             </div>
-
-
-        </div>
-
             {% else %}
             <div class="row">
             <div class="col-md-12">
@@ -63,7 +59,12 @@
 
             </div>
             </div>
-        {% endif %}
+            {% endif %}
+
+
+        </div>
+
+
 
     </div>
 
