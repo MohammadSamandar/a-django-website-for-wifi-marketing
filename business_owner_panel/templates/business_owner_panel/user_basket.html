@@ -1,7 +1,7 @@
 {% extends 'business_owner_panel/base.html' %}
 {% load static %}
 {% load thumbnail %}
-{% load poll_extras %}
+{#{% load poll_extras %}#}
 {% load render_partial %}
 
 
@@ -13,9 +13,14 @@
     <div class="container">
 
         <h1>پلن موجود در سبد خرید</h1>
+
         <br><br>
+
+        <div id="order-detail-content">
+
+
             <table class="table">
-            <thead>
+                <thead>
                 <tr>
                     <th>نام محصول</th>
                     <th>قیمت</th>
@@ -23,29 +28,29 @@
                 </tr>
             </thead>
 
-            <tbody>
+                <tbody>
             {% for item in order.orderdetail_set.all %}
                 <tr>
                     <td>{{ item.product.title }}</td>
                     <td>{{ item.product.price }} تومان</td>
                     <td>
-                        <button class="btn btn-danger btn-sm">حذف</button>
+                        <button onclick="removeOrderDetail({{ item.id }})" class="btn btn-danger btn-sm">حذف</button>
                     </td>
                 </tr>
             {% endfor %}
 
             </tbody>
 
-        </table>
+            </table>
 
 
 
-     <div class="text-center">
+            <div class="text-center">
             <button class="btn btn-primary">به روز رسانی سبد خرید</button>
             <button class="btn btn-success">پرداخت</button>
+            </div>
         </div>
     </div>
-
 
 
 

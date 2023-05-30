@@ -25,3 +25,11 @@ function AddProductToOrder(productId){
 }
 
 
+function removeOrderDetail(detailId){
+    $.get('/dashboard/order/remove-basket-detail?detail_id=' + detailId).then(res => {
+        if (res.status === 'success'){
+            $('#order-detail-content').html(res.body);
+        }
+    });
+
+}

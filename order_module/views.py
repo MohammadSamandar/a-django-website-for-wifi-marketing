@@ -3,7 +3,7 @@ from django.http import HttpRequest, HttpResponse, JsonResponse
 from product_module.models import SubscriptionPlan
 from django.contrib.auth.decorators import login_required
 from .models import Order, OrderDetail
-
+from django.template.loader import render_to_string
 # Create your views here.
 
 @login_required
@@ -47,3 +47,34 @@ def user_basket(request: HttpRequest):
         'order': current_order,
     }
     return render(request, 'business_owner_panel/user_basket.html', context)
+
+
+def remove_order_detail(request: HttpRequest):
+    detail_id = request.GET.get('detail_id')
+    if detail_id is None:
+        return JsonResponse({
+            'status': 'not_found_detail_id'
+        })
+
+
+    current_order, created = Order.objects.prefetch_related('orderdetail_set').get_or_create(is_paid=False, user_id=request.user.id)
+    detail = current_order.orderdetail_set.filter(id=detail_id).first()
+
+    if detail is None:
+        return JsonResponse({
+            'status': 'detail_not_found'
+        })
+
+    detail.delete()
+
+    current_order, created = Order.objects.prefetch_related('orderdetail_set').get_or_create(is_paid=False, user_id=request.user.id)
+
+    context = {
+        'order': current_order,
+    }
+    data = render_to_string('business_owner_panel/user_basket_content.html', context)
+    return JsonResponse({
+        'status': 'success',
+        'body': data
+    })
+

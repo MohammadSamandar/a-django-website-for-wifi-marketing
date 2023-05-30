@@ -1,0 +1,34 @@
+
+
+<table class="table">
+            <thead>
+                <tr>
+                    <th>نام محصول</th>
+                    <th>قیمت</th>
+                    <th>عملیات</th>
+                </tr>
+            </thead>
+
+            <tbody>
+            {% for item in order.orderdetail_set.all %}
+                <tr>
+                    <td>{{ item.product.title }}</td>
+                    <td>{{ item.product.price }} تومان</td>
+                    <td>
+                        <button class="btn btn-danger btn-sm">حذف</button>
+                    </td>
+                </tr>
+            {% endfor %}
+
+            </tbody>
+
+        </table>
+
+
+
+<div class="text-center">
+    <button class="btn btn-primary">به روز رسانی سبد خرید</button>
+    <button class="btn btn-success">پرداخت</button>
+</div>
+
+
