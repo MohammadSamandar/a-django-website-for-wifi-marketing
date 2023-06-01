@@ -19,7 +19,7 @@ from customer_login.models import BusinessCustomer
 from users.models import SiteUser
 from Businesses.models import Business
 from product_module.models import SubscriptionPlan
-
+from order_module.models import Order
 
 # Create your views here.
 
@@ -217,9 +217,9 @@ def customers_import(request):
 
 
 
-@login_required
-def payments(request):
-    return render(request, 'business_owner_panel/payments.html')
+# @login_required
+# def payments(request):
+#     return render(request, 'business_owner_panel/payments_list.html')
 
 
 @login_required
@@ -246,6 +246,31 @@ def subscription_plan_detial(request, slug):
 
 
     return render(request, 'business_owner_panel/subscriptionplan_detail.html', context)
+
+
+
+@method_decorator(login_required, name='dispatch')
+class PaymentsList(ListView):
+    model = Order
+    template_name = 'business_owner_panel/payments_list.html'
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        request: HttpRequest = self.request
+        queryset.filter(user_id= request.user.id, is_paid=True)
+
+        return queryset
+
+
+
+
+
+
+
+
+
+
+
 
 
 @login_required

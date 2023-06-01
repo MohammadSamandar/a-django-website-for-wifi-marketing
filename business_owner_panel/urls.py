@@ -19,7 +19,7 @@ urlpatterns = [
     path('customers-import/', views.customers_import, name = 'customers_import'),
 
 
-    path('payments/', views.payments, name = 'payments'),
+    path('payments-list/', views.PaymentsList.as_view(), name = 'payments'),
     path('subscription-plan/', views.subscription_plan, name = 'subscription_plan'),
     path('<slug:slug>', views.subscription_plan_detial, name = 'subscription_plan_detail'),
 

@@ -1,0 +1,91 @@
+{% extends 'business_owner_panel/base.html' %}
+{% load static %}
+{% load thumbnail %}
+{#{% load poll_extras %}#}
+{% load render_partial %}
+
+
+{% block title %}
+    سوابق مالی و لیست پرداخت ها
+{% endblock %}
+
+{% block content %}
+
+
+    <div class="container">
+
+        <h1>لیست پرداخت ها</h1>
+
+        <br><br>
+
+        <div id="order-detail-content">
+{#            {% if order.orderdetail_set.all %}#}
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>شناسه</th>
+                        <th>تاریخ تایید فاکتور</th>
+                        <th>قیمت نهایی خرید</th>
+                        <th>عملیات</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for item in object_list %}
+                        <tr>
+                            <td>{{ item.id}}</td>
+                            <td>{{ item.payment_date }}</td>
+                            <td>{{ item.calculate_total_price }} تومان</td>
+                            <td>
+                                <button onclick="removeOrderDetail({{ item.id }})" class="btn btn-info btn-sm">جزییات</button>
+                            </td>
+                        </tr>
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+
+
+            <div class="text-center">
+                <button class="btn btn-primary">به روز رسانی سبد خرید</button>
+                <a href="{% url  'request_payment'%}">
+                    <button class="btn btn-success">پرداخت</button>
+                </a>
+
+            </div>
+{#            {% else %}#}
+{#            <div class="row">#}
+{#            <div class="col-md-12">#}
+{#                <div class="alert alert-warning">#}
+{#                    <p>سبد خرید شما خالی می باشد</p>#}
+{##}
+{#                </div>#}
+{##}
+{#            </div>#}
+{#            </div>#}
+{#            {% endif %}#}
+
+
+        </div>
+
+
+
+    </div>
+
+
+
+{% endblock %}
+
+
+{% block footer_reference %}
+    {% include 'business_owner_panel/components_references/footer_references.html' %}
+
+<script type="text/javascript">
+        $(document).ready(function () {
+            $('#example').DataTable();
+        });
+</script>
+{% endblock %}
