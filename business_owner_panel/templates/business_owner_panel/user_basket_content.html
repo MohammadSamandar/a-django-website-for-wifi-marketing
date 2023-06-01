@@ -27,8 +27,10 @@
 
 
             <div class="text-center">
-            <button class="btn btn-primary">به روز رسانی سبد خرید</button>
-            <button class="btn btn-success">پرداخت</button>
+                <button class="btn btn-primary">به روز رسانی سبد خرید</button>
+                <a href="{% url  'request_payment'%}">
+                    <button class="btn btn-success">پرداخت</button>
+                </a>
             </div>
             {% else %}
             <div class="row">

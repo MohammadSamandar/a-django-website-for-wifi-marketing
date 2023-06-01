@@ -224,3 +224,6 @@ CSRF_TRUSTED_ORIGINS = [
     'https://shandizgalleria.smartasha.ir',
 ]
 
+
+
+SANDBOX = False

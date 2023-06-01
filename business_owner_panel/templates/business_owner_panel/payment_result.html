@@ -1,0 +1,52 @@
+{% extends 'business_owner_panel/base.html' %}
+{% load static %}
+{% load thumbnail %}
+{#{% load poll_extras %}#}
+{% load render_partial %}
+
+
+{% block title %}
+  نتیجه پرداخت
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-12">
+
+                {% if success %}
+                    <div class="alert alert-success">
+                        {{ success }}
+                    </div>
+                {% endif %}
+
+                {% if error %}
+                    <div class="alert alert-success">
+                        {{ error }}
+                    </div>
+                {% endif %}
+
+            </div>
+        </div>
+
+
+
+
+
+    </div>
+
+
+
+{% endblock %}
+
+
+{% block footer_reference %}
+    {% include 'business_owner_panel/components_references/footer_references.html' %}
+
+<script type="text/javascript">
+        $(document).ready(function () {
+            $('#example').DataTable();
+        });
+</script>
+{% endblock %}
