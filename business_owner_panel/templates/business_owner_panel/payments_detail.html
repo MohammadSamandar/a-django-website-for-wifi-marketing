@@ -6,7 +6,7 @@
 
 
 {% block title %}
-    سوابق مالی و لیست پرداخت ها
+    جزییات پرداخت ها
 {% endblock %}
 
 {% block content %}
@@ -14,7 +14,7 @@
 
     <div class="container">
 
-        <h1>لیست پرداخت ها</h1>
+        <h1>جزییات پرداخت </h1>
 
         <br><br>
 
@@ -25,23 +25,18 @@
                 <thead>
                     <tr>
                         <th>شناسه</th>
-                        <th>تاریخ تایید فاکتور</th>
+                        <th>محصول</th>
                         <th>قیمت نهایی خرید</th>
-                        <th>عملیات</th>
                     </tr>
                 </thead>
 
                 <tbody>
-                    {% for item in object_list %}
+                    {% for item in order.orderdetail_set.all %}
                         <tr>
                             <td>{{ item.id}}</td>
-                            <td>{{ item.payment_date }}</td>
-                            <td>{{ item.calculate_total_price }} تومان</td>
-                            <td>
-                                <a href="{% url 'payments_detail' payment_id=item.id %}">
-                                <button onclick="removeOrderDetail({{ item.id }})" class="btn btn-info btn-sm">جزییات</button>
-                                </a>
-                            </td>
+                            <td>{{ item.product.title }}</td>
+                            <td>{{ item.final_price }} تومان</td>
+
                         </tr>
                     {% endfor %}
 

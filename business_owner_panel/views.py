@@ -7,7 +7,7 @@ from django.contrib import messages
 from django.views import View
 from django.views.generic import TemplateView
 from tablib import Dataset
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
 from .resources import CustomerResource
 from django.contrib.auth import logout
 from django.utils.decorators import method_decorator
@@ -257,9 +257,22 @@ class PaymentsList(ListView):
     def get_queryset(self):
         queryset = super().get_queryset()
         request: HttpRequest = self.request
-        queryset.filter(user_id= request.user.id, is_paid=True)
+        queryset = queryset.filter(user_id= request.user.id, is_paid=True)
 
         return queryset
+
+
+def payments_detail(request: HttpRequest, payment_id):
+
+    order = Order.objects.prefetch_related('orderdetail_set').filter(id=payment_id, user_id=request.user.id).first()
+    if order is None:
+        raise Http404('آیتم مورد نظر یافت نشد')
+
+    context = {
+        'order': order
+    }
+
+    return render(request, 'business_owner_panel/payments_detail.html', context)
 
 
 

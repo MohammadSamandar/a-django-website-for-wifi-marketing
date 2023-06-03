@@ -20,6 +20,7 @@ urlpatterns = [
 
 
     path('payments-list/', views.PaymentsList.as_view(), name = 'payments'),
+    path('payments-detail/<payment_id>', views.payments_detail, name = 'payments_detail'),
     path('subscription-plan/', views.subscription_plan, name = 'subscription_plan'),
     path('<slug:slug>', views.subscription_plan_detial, name = 'subscription_plan_detail'),
 
